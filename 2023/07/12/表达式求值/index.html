@@ -16,26 +16,25 @@
   <meta name="author" content="Zehao Zhang">
   <meta name="keywords" content="">
   
-    <meta name="description" content="快速排序 1. 主要思想 快速排序算法的主要思想：分治 2. 快速排序的步骤  确定分界点x  确定一个分界点，用于将数组划分为两个子数组 常用方式：取边界（q[l]或q[r]）、取中间值（q[(l+r)&#x2F;2]）、取区间内随机一个数  调整区间（重难点）  根据分界点，把区间分为两部分，使得左边区间的数都&lt;&#x3D;x，右边区间的数都&gt;&#x3D;x  递归处理左右两段区间">
+    <meta name="description" content="表达式求值  原题链接：3302. 表达式求值 - AcWing题库  一、题目 给定一个表达式，其中运算符仅包含 +,-,*,&#x2F;（加 减 乘 整除），可能包含括号，请你求出表达式的最终值。 注意：  数据保证给定的表达式合法。 题目保证符号 - 只作为减号出现，不会作为负号出现，例如，-1+2,(2+2)*(-(1+1)+2) 之类表达式均不会出现。 题目保证表达式中所有数字">
 <meta property="og:type" content="article">
-<meta property="og:title" content="快速排序">
-<meta property="og:url" content="http://ihrd.github.io/2023/06/28/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/index.html">
+<meta property="og:title" content="表达式求值">
+<meta property="og:url" content="http://ihrd.github.io/2023/07/12/%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%B1%82%E5%80%BC/index.html">
 <meta property="og:site_name" content="IHRD">
-<meta property="og:description" content="快速排序 1. 主要思想 快速排序算法的主要思想：分治 2. 快速排序的步骤  确定分界点x  确定一个分界点，用于将数组划分为两个子数组 常用方式：取边界（q[l]或q[r]）、取中间值（q[(l+r)&#x2F;2]）、取区间内随机一个数  调整区间（重难点）  根据分界点，把区间分为两部分，使得左边区间的数都&lt;&#x3D;x，右边区间的数都&gt;&#x3D;x  递归处理左右两段区间">
+<meta property="og:description" content="表达式求值  原题链接：3302. 表达式求值 - AcWing题库  一、题目 给定一个表达式，其中运算符仅包含 +,-,*,&#x2F;（加 减 乘 整除），可能包含括号，请你求出表达式的最终值。 注意：  数据保证给定的表达式合法。 题目保证符号 - 只作为减号出现，不会作为负号出现，例如，-1+2,(2+2)*(-(1+1)+2) 之类表达式均不会出现。 题目保证表达式中所有数字">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://s1.ax1x.com/2023/07/14/pC4LePI.png">
-<meta property="article:published_time" content="2023-06-28T09:46:15.000Z">
-<meta property="article:modified_time" content="2023-07-15T16:11:30.950Z">
+<meta property="article:published_time" content="2023-07-12T03:51:35.000Z">
+<meta property="article:modified_time" content="2023-07-15T03:58:13.112Z">
 <meta property="article:author" content="Zehao Zhang">
-<meta property="article:tag" content="快速排序">
+<meta property="article:tag" content="栈">
+<meta property="article:tag" content="表达式求值">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://s1.ax1x.com/2023/07/14/pC4LePI.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>快速排序 - IHRD</title>
+  <title>表达式求值 - IHRD</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -232,7 +231,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="快速排序"></span>
+            <span id="subtitle" data-typed-text="表达式求值"></span>
           
         </div>
 
@@ -243,8 +242,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-06-28 17:46" pubdate>
-          2023年6月28日 下午
+        <time datetime="2023-07-12 11:51" pubdate>
+          2023年7月12日 中午
         </time>
       </span>
     
@@ -255,7 +254,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.6k 字
+          1.6k 字
         
       </span>
     
@@ -266,7 +265,7 @@
         
         
         
-          22 分钟
+          14 分钟
         
       </span>
     
@@ -303,84 +302,39 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">快速排序</h1>
+            <h1 id="seo-header">表达式求值</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="快速排序">快速排序</h1>
-<h2 id="主要思想">1. 主要思想</h2>
-<p>快速排序算法的主要思想：<strong>分治</strong></p>
-<h2 id="快速排序的步骤">2. 快速排序的步骤</h2>
-<ol type="1">
-<li>确定分界点<code>x</code>
-<ul>
-<li>确定一个分界点，用于将数组划分为两个子数组</li>
-<li>常用方式：取边界（<code>q[l]</code>或<code>q[r]</code>）、取中间值（<code>q[(l+r)/2]</code>）、取区间内随机一个数</li>
-</ul></li>
-<li>调整区间<strong>（重难点）</strong>
-<ul>
-<li>根据分界点，把区间分为两部分，使得左边区间的数都<code>&lt;=x</code>，右边区间的数都<code>&gt;=x</code></li>
-</ul></li>
-<li>递归处理左右两段区间</li>
-</ol>
-<p><img src="https://s1.ax1x.com/2023/07/14/pC4LFqe.png" srcset="/img/loading.gif" lazyload></p>
-<h2 id="如何调整区间">3. 如何调整区间</h2>
-<h3 id="方法一暴力法思想简单占用额外空间">方法一：暴力法（思想简单、占用额外空间）</h3>
-<ul>
-<li><strong>基本思想：</strong>
-<ul>
-<li><p>首先，开两个额外的数组<code>a[]</code>、<code>b[]</code>。</p></li>
-<li><p>然后，扫描<code>q[l] ~ q[r]</code>的每一个数。如果<code>q[i]&lt;=x</code>，则把其插入到数组<code>a[]</code>中；如果<code>q[i]&gt;x</code>，则把其插入到数组<code>b[]</code>中。</p></li>
-<li><p>最后，先遍历数组<code>a[]</code>，再遍历数组<code>b[]</code>，把数组中的数依次存储到数组<code>q[]</code>中。</p></li>
-</ul></li>
-<li><strong>时空复杂度：</strong>
-<ul>
-<li>时间复杂度：<span class="math inline">\(O(n)\)</span></li>
-<li>空间复杂度：<span class="math inline">\(O(n)\)</span></li>
-</ul></li>
-</ul>
-<h3 id="方法二双指针法优美而简洁">方法二：双指针法（优美而简洁）</h3>
+                <h1 id="表达式求值">表达式求值</h1>
 <blockquote>
-<p><strong>要点：</strong>在任何时刻，<code>i</code>指针左边所有的数都一定<code>&lt;=x</code>，<code>j</code>指针右边的数都一定<code>&gt;=x</code>。</p>
-<p><strong>原因：</strong>当<code>i</code>指针在遍历时，如果当前数满足<code>&lt;x</code>的条件时，则<code>i</code>会指向下一个数；如果当前数不满足<code>&lt;x</code>的条件时，<code>i</code>指针会等待<code>j</code>指针找到一个<code>&gt;=x</code>的数与之交换，从而使得当前数也满足<code>&lt;=x</code>的条件。最终，<code>i</code>指针左侧所有的数都一定<code>&lt;=x</code>。对于<code>j</code>指针，同理。</p>
+<p><strong>原题链接：</strong><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/3305/">3302. 表达式求值 - AcWing题库</a></p>
 </blockquote>
+<h2 id="一题目">一、题目</h2>
+<p>给定一个表达式，其中运算符仅包含 <code>+,-,*,/</code>（加 减 乘 整除），可能包含括号，请你求出表达式的最终值。</p>
+<p><strong>注意：</strong></p>
 <ul>
-<li><p><strong>基本思想：</strong></p>
-<ul>
-<li><p>定义两个指针<code>i</code>和<code>j</code>，分别指向要排序的数组<code>q</code>的两端</p>
-<p><img src="https://s1.ax1x.com/2023/07/14/pC4LirD.png" srcset="/img/loading.gif" lazyload alt="pC4LirD.png"></p></li>
-<li><p>两个指针分别往中间走，即<code>i++</code>和<code>j--</code>。</p>
-<ul>
-<li><p>首先，移动<code>i</code>指针。当<code>i</code>指向的值满足<code>q[i]&lt;x</code>时，<code>i</code>做自增运算，即<code>i++</code>；否则，<code>i</code>指针停止移动。</p></li>
-<li><p>然后，移动<code>j</code>指针。当<code>j</code>指向的值满足<code>q[j]&gt;x</code>时，<code>j</code>做自减运算，即<code>j--</code>；否则，<code>j</code>指针停止移动。</p>
-<p><img src="https://s1.ax1x.com/2023/07/14/pC4LPKO.png" srcset="/img/loading.gif" lazyload alt="pC4LPKO.png"></p></li>
-</ul></li>
-<li><p>做完上述指针移动操作后，<code>i</code>指针左边所有的值都满足<code>q[]&lt;x</code>，<code>j</code>指针右边所有的值都满足<code>q[]&gt;x</code>，但此时<code>q[i]&gt;=x</code>且<code>q[j]&lt;=x</code>。为满足要求（调整区间），需要通过交换<code>i</code>和<code>j</code>指向的值，使得<code>i</code>指向的值满足<code>q[i]&lt;=x</code>、<code>j</code>指向的值满足<code>q[j]&gt;=x</code>，从而使程序能够继续运行。</p>
-<p><img src="https://s1.ax1x.com/2023/07/14/pC4LmGt.png" srcset="/img/loading.gif" lazyload alt="pC4LmGt.png"></p></li>
-<li><p>当<code>i&gt;j</code>时，说明已经得到了两端调整后的区间（此时，<code>i</code>指针左边的值都满足小于等于x，<code>j</code>指针右边的值都满足大于等于x）</p>
-<p><img src="https://s1.ax1x.com/2023/07/14/pC4L9xK.png" srcset="/img/loading.gif" lazyload alt="pC4L9xK.png"></p></li>
-</ul></li>
-<li><p><strong>时空复杂度：</strong></p></li>
-<li><p>时间复杂度：<span class="math inline">\(O(nlog_2n)\)</span></p></li>
-<li><p>空间复杂度：<span class="math inline">\(O(1)\)</span></p></li>
+<li>数据保证给定的表达式合法。</li>
+<li>题目保证符号 <code>-</code> 只作为减号出现，不会作为负号出现，例如，<code>-1+2</code>,<code>(2+2)*(-(1+1)+2)</code> 之类表达式均不会出现。</li>
+<li>题目保证表达式中所有数字均为正整数。</li>
+<li>题目保证表达式在中间计算过程以及结果中，均不超过 <span class="math inline">\(2^{31}−1\)</span>。</li>
+<li>题目中的整除是指向 00 取整，也就是说对于大于 00 的结果向下取整，例如 <span class="math inline">\(5/3=1\)</span>，对于小于 <span class="math inline">\(0\)</span> 的结果向上取整，例如 <span class="math inline">\(5/(1−4)=−1\)</span>。</li>
+<li>C++和Java中的整除默认是向零取整；Python中的整除<code>//</code>默认向下取整，因此Python的<code>eval()</code>函数中的整除也是向下取整，在本题中不能直接使用。</li>
 </ul>
-<h2 id="模板">4. 模板</h2>
-<h3 id="模板-1">(1) 模板</h3>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">// 模板1☆</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">quick_sort</span><span class="hljs-params">(<span class="hljs-type">int</span> q[], <span class="hljs-type">int</span> l, <span class="hljs-type">int</span> r)</span> </span>&#123;<br>    <span class="hljs-comment">// 判断当前要排序的子数组中的元素个数是否&lt;=1</span><br>    <span class="hljs-keyword">if</span> (l &gt;= r) <span class="hljs-keyword">return</span>;<br>    <span class="hljs-type">int</span> i = l - <span class="hljs-number">1</span>, j = r + <span class="hljs-number">1</span>, x = q[l + r &gt;&gt; <span class="hljs-number">1</span>];<br>    <span class="hljs-comment">// 调整区间</span><br>    <span class="hljs-keyword">while</span> (i &lt; j) &#123;<br>        <span class="hljs-keyword">do</span> i++; <span class="hljs-keyword">while</span> (q[i] &lt; x);<br>        <span class="hljs-keyword">do</span> j--; <span class="hljs-keyword">while</span> (q[j] &gt; x);<br>        <span class="hljs-keyword">if</span> (i &lt; j) <span class="hljs-built_in">swap</span>(q[i], q[j]);<br>    &#125;<br>    <span class="hljs-comment">// 递归排序子数组</span><br>    <span class="hljs-built_in">quick_sort</span>(q, l, j);	<span class="hljs-comment">// 这里尽量用 j</span><br>    <span class="hljs-built_in">quick_sort</span>(q, j + <span class="hljs-number">1</span>, r);<br>&#125;<br><span class="hljs-comment">// 模板2</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">quick_sort</span><span class="hljs-params">(<span class="hljs-type">int</span> q[], <span class="hljs-type">int</span> l, <span class="hljs-type">int</span> r)</span> </span>&#123;<br>    <span class="hljs-comment">// 判断当前要排序的子数组中的元素个数是否&lt;=1</span><br>    <span class="hljs-keyword">if</span> (l &gt;= r) <span class="hljs-keyword">return</span>;<br>    <span class="hljs-type">int</span> i = l - <span class="hljs-number">1</span>, j = r + <span class="hljs-number">1</span>, x = q[l + r + <span class="hljs-number">1</span> &gt;&gt; <span class="hljs-number">1</span>];<br>    <span class="hljs-comment">// 调整区间</span><br>    <span class="hljs-keyword">while</span> (i &lt; j) &#123;<br>        <span class="hljs-keyword">do</span> i++; <span class="hljs-keyword">while</span> (q[i] &lt; x);<br>        <span class="hljs-keyword">do</span> j--; <span class="hljs-keyword">while</span> (q[j] &gt; x);<br>        <span class="hljs-keyword">if</span> (i &lt; j) <span class="hljs-built_in">swap</span>(q[i], q[j]);<br>    &#125;<br>    <span class="hljs-comment">// 递归排序子数组</span><br>    <span class="hljs-built_in">quick_sort</span>(q, l, i - <span class="hljs-number">1</span>);<br>    <span class="hljs-built_in">quick_sort</span>(q, i, r);<br>&#125;<br></code></pre></td></tr></table></figure>
-<h3 id="关于边界问题">(2) 关于边界问题</h3>
-<p><strong>正确代码1</strong></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">quick_sort</span><span class="hljs-params">(<span class="hljs-type">int</span> q[], <span class="hljs-type">int</span> l, <span class="hljs-type">int</span> r)</span> </span>&#123;<br>    <span class="hljs-keyword">if</span> (l &gt;= r) <span class="hljs-keyword">return</span>;<br>    <span class="hljs-type">int</span> i = l - <span class="hljs-number">1</span>, j = r + <span class="hljs-number">1</span>, x = q[l];		<span class="hljs-comment">// 或者x = q[(l+r)/2]</span><br>    <span class="hljs-keyword">while</span> (i &lt; j) &#123;<br>        <span class="hljs-keyword">do</span> i++; <span class="hljs-keyword">while</span> (q[i] &lt; x);<br>        <span class="hljs-keyword">do</span> j--; <span class="hljs-keyword">while</span> (q[j] &gt; x);<br>        <span class="hljs-keyword">if</span> (i &lt; j) <span class="hljs-built_in">swap</span>(q[i], q[j]);<br>    &#125;<br>    <span class="hljs-built_in">quick_sort</span>(q, l, j);<br>    <span class="hljs-built_in">quick_sort</span>(q, j + <span class="hljs-number">1</span>, r);<br>&#125;<br></code></pre></td></tr></table></figure>
-<p><img src="https://s1.ax1x.com/2023/07/14/pC4LAVH.png" srcset="/img/loading.gif" lazyload></p>
-<p><strong>错误代码1</strong></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">quick_sort</span><span class="hljs-params">(<span class="hljs-type">int</span> q[], <span class="hljs-type">int</span> l, <span class="hljs-type">int</span> r)</span> </span>&#123;<br>    <span class="hljs-keyword">if</span> (l &gt;= r) <span class="hljs-keyword">return</span>;<br>    <span class="hljs-type">int</span> i = l - <span class="hljs-number">1</span>, j = r + <span class="hljs-number">1</span>, x = q[r];		<span class="hljs-comment">// 或者x = q[(l+r)/2]</span><br>    <span class="hljs-keyword">while</span> (i &lt; j) &#123;<br>        <span class="hljs-keyword">do</span> i++; <span class="hljs-keyword">while</span> (q[i] &lt; x);<br>        <span class="hljs-keyword">do</span> j--; <span class="hljs-keyword">while</span> (q[j] &gt; x);<br>        <span class="hljs-keyword">if</span> (i &lt; j) <span class="hljs-built_in">swap</span>(q[i], q[j]);<br>    &#125;<br>    <span class="hljs-built_in">quick_sort</span>(q, l, j);<br>    <span class="hljs-built_in">quick_sort</span>(q, j + <span class="hljs-number">1</span>, r);<br>&#125;<br></code></pre></td></tr></table></figure>
-<p><img src="https://s1.ax1x.com/2023/07/14/pC4LEad.png" srcset="/img/loading.gif" lazyload></p>
-<p><strong>正确代码2</strong></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">quick_sort</span><span class="hljs-params">(<span class="hljs-type">int</span> q[], <span class="hljs-type">int</span> l, <span class="hljs-type">int</span> r)</span> </span>&#123;<br>    <span class="hljs-keyword">if</span> (l &gt;= r) <span class="hljs-keyword">return</span>;<br>    <span class="hljs-type">int</span> i = l - <span class="hljs-number">1</span>, j = r + <span class="hljs-number">1</span>, x = q[r];		<span class="hljs-comment">// 或者x = q[(l+r+1)/2]</span><br>    <span class="hljs-keyword">while</span> (i &lt; j) &#123;<br>        <span class="hljs-keyword">do</span> i++; <span class="hljs-keyword">while</span> (q[i] &lt; x);<br>        <span class="hljs-keyword">do</span> j--; <span class="hljs-keyword">while</span> (q[j] &gt; x);<br>        <span class="hljs-keyword">if</span> (i &lt; j) <span class="hljs-built_in">swap</span>(q[i], q[j]);<br>    &#125;<br>    <span class="hljs-built_in">quick_sort</span>(q, l, i - <span class="hljs-number">1</span>);<br>    <span class="hljs-built_in">quick_sort</span>(q, i, r);<br>&#125;<br></code></pre></td></tr></table></figure>
-<p><img src="https://s1.ax1x.com/2023/07/14/pC4LVIA.png" srcset="/img/loading.gif" lazyload></p>
-<p><strong>错误代码2</strong></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">quick_sort</span><span class="hljs-params">(<span class="hljs-type">int</span> q[], <span class="hljs-type">int</span> l, <span class="hljs-type">int</span> r)</span> </span>&#123;<br>    <span class="hljs-keyword">if</span> (l &gt;= r) <span class="hljs-keyword">return</span>;<br>    <span class="hljs-type">int</span> i = l - <span class="hljs-number">1</span>, j = r + <span class="hljs-number">1</span>, x = q[l];		<span class="hljs-comment">// 或者x = q[(l+r+1)/2]</span><br>    <span class="hljs-keyword">while</span> (i &lt; j) &#123;<br>        <span class="hljs-keyword">do</span> i++; <span class="hljs-keyword">while</span> (q[i] &lt; x);<br>        <span class="hljs-keyword">do</span> j--; <span class="hljs-keyword">while</span> (q[j] &gt; x);<br>        <span class="hljs-keyword">if</span> (i &lt; j) <span class="hljs-built_in">swap</span>(q[i], q[j]);<br>    &#125;<br>    <span class="hljs-built_in">quick_sort</span>(q, l, i - <span class="hljs-number">1</span>);<br>    <span class="hljs-built_in">quick_sort</span>(q, i, r);<br>&#125;<br></code></pre></td></tr></table></figure>
-<p><img src="https://s1.ax1x.com/2023/07/14/pC4LePI.png" srcset="/img/loading.gif" lazyload></p>
+<p><strong>输入格式</strong></p>
+<p>共一行，为给定表达式。</p>
+<p><strong>输出格式</strong></p>
+<p>共一行，为表达式的结果。</p>
+<p><strong>数据范围</strong></p>
+<p>表达式的长度不超过 <span class="math inline">\(10^5\)</span>。</p>
+<p><strong>输入样例：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs input">(2+2)*(1+1)<br></code></pre></td></tr></table></figure>
+<p><strong>输出样例：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs output">8<br></code></pre></td></tr></table></figure>
+<h2 id="二分析">二、分析</h2>
+<h2 id="三题解">三、题解</h2>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;algorithm&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stack&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;unordered_map&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br>stack&lt;<span class="hljs-type">int</span>&gt; num;<br>stack&lt;<span class="hljs-type">char</span>&gt; op;<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">eval</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">auto</span> b = num.<span class="hljs-built_in">top</span>(); num.<span class="hljs-built_in">pop</span>();<br>    <span class="hljs-keyword">auto</span> a = num.<span class="hljs-built_in">top</span>(); num.<span class="hljs-built_in">pop</span>();<br>    <span class="hljs-keyword">auto</span> c = op.<span class="hljs-built_in">top</span>(); op.<span class="hljs-built_in">pop</span>();<br>    <span class="hljs-type">int</span> x;<br>    <span class="hljs-keyword">if</span> (c == <span class="hljs-string">&#x27;+&#x27;</span>) x = a + b;<br>    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (c == <span class="hljs-string">&#x27;-&#x27;</span>) x = a - b;<br>    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (c == <span class="hljs-string">&#x27;*&#x27;</span>) x = a * b;<br>    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (c == <span class="hljs-string">&#x27;/&#x27;</span>) x = a / b;<br>    num.<span class="hljs-built_in">push</span>(x);<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    unordered_map&lt;<span class="hljs-type">char</span>, <span class="hljs-type">int</span>&gt; pr&#123;&#123;<span class="hljs-string">&#x27;+&#x27;</span>, <span class="hljs-number">1</span>&#125;, &#123;<span class="hljs-string">&#x27;-&#x27;</span>, <span class="hljs-number">1</span>&#125;, &#123;<span class="hljs-string">&#x27;*&#x27;</span>, <span class="hljs-number">2</span>&#125;, &#123;<span class="hljs-string">&#x27;/&#x27;</span>, <span class="hljs-number">2</span>&#125;&#125;;<br>    string str;<br>    cin &gt;&gt; str;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; str.<span class="hljs-built_in">size</span>(); i++)<br>    &#123;<br>        <span class="hljs-keyword">auto</span> c = str[i];<br>        <span class="hljs-keyword">if</span> (<span class="hljs-built_in">isdigit</span>(c))<br>        &#123;<br>            <span class="hljs-type">int</span> x = <span class="hljs-number">0</span>, j = i;<br>            <span class="hljs-keyword">while</span> (j &lt; str.<span class="hljs-built_in">size</span>() &amp;&amp; <span class="hljs-built_in">isdigit</span>(str[j]))<br>                x = x * <span class="hljs-number">10</span> + str[j++] - <span class="hljs-string">&#x27;0&#x27;</span>;<br>            i = j - <span class="hljs-number">1</span>;<br>            num.<span class="hljs-built_in">push</span>(x);<br>        &#125;<br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (c == <span class="hljs-string">&#x27;(&#x27;</span>) op.<span class="hljs-built_in">push</span>(c);<br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (c == <span class="hljs-string">&#x27;)&#x27;</span>)<br>        &#123;<br>            <span class="hljs-keyword">while</span> (op.<span class="hljs-built_in">top</span>() != <span class="hljs-string">&#x27;(&#x27;</span>) <span class="hljs-built_in">eval</span>();<br>            op.<span class="hljs-built_in">pop</span>();<br>        &#125;<br>        <span class="hljs-keyword">else</span> <br>        &#123;<br>            <span class="hljs-keyword">while</span> (op.<span class="hljs-built_in">size</span>() &amp;&amp; op.<span class="hljs-built_in">top</span>() != <span class="hljs-string">&#x27;(&#x27;</span> &amp;&amp; pr[op.<span class="hljs-built_in">top</span>()] &gt;= pr[c]) <span class="hljs-built_in">eval</span>();<br>            op.<span class="hljs-built_in">push</span>(c);<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">while</span> (op.<span class="hljs-built_in">size</span>()) <span class="hljs-built_in">eval</span>();<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d&quot;</span>, num.<span class="hljs-built_in">top</span>());<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
 
                 
               </div>
@@ -399,7 +353,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/Algorithm/" class="category-chain-item">Algorithm</a>
+  <a href="/categories/%E9%A2%98%E8%A7%A3/" class="category-chain-item">题解</a>
   
   
 
@@ -414,7 +368,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/" class="print-no-link">#快速排序</a>
+        <a href="/tags/%E6%A0%88/" class="print-no-link">#栈</a>
+      
+        <a href="/tags/%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%B1%82%E5%80%BC/" class="print-no-link">#表达式求值</a>
       
     </div>
   
@@ -426,8 +382,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>快速排序</div>
-      <div>http://ihrd.github.io/2023/06/28/快速排序/</div>
+      <div>表达式求值</div>
+      <div>http://ihrd.github.io/2023/07/12/表达式求值/</div>
     </div>
     <div class="license-meta">
       
@@ -439,7 +395,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年6月28日</div>
+          <div>2023年7月12日</div>
         </div>
       
       
@@ -471,15 +427,15 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/06/29/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/" title="归并排序">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">归并排序</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
+                    
+                      <a href="/2023/07/09/%E6%A0%88%E4%B8%8E%E9%98%9F%E5%88%97/" title="栈与队列">
+                        <span class="hidden-mobile">栈与队列</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
                     
                   </article>
                 </div>
