@@ -4,6 +4,193 @@
   
   
   <entry>
+    <title>栈与队列</title>
+    <link href="/2023/07/09/%E6%A0%88%E4%B8%8E%E9%98%9F%E5%88%97/"/>
+    <url>/2023/07/09/%E6%A0%88%E4%B8%8E%E9%98%9F%E5%88%97/</url>
+    
+    <content type="html"><![CDATA[<h1 id="栈与队列单调队列单调栈">栈与队列：单调队列、单调栈</h1><blockquote><p>使用<strong>数组</strong>模拟</p></blockquote><figure><img src="/.io//image-20230712113500975.png" alt="image-20230712113500975"><figcaption aria-hidden="true">image-20230712113500975</figcaption></figure><h2 id="栈">1. 栈</h2><p><strong>模板</strong></p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">// tt表示栈顶下标</span><br><span class="hljs-type">int</span> stk[N], tt = <span class="hljs-number">0</span>;<br><br><span class="hljs-comment">// 向栈顶插入一个数</span><br>stk[++tt] = x;<br><br><span class="hljs-comment">// 从栈顶弹出一个数</span><br>tt--;<br><br><span class="hljs-comment">// 栈顶的值</span><br>stk[tt];<br><br><span class="hljs-comment">// 判断栈是否为空，如果 tt &gt; 0，则表示不为空</span><br><span class="hljs-keyword">if</span> (tt &gt; <span class="hljs-number">0</span>)<br>&#123;<br><br>&#125;<br></code></pre></td></tr></table></figure><h2 id="队列">2. 队列</h2><h3 id="普通队列">1. 普通队列</h3><p><strong>模板</strong></p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">// hh 表示队头，tt表示队尾</span><br><span class="hljs-type">int</span> q[N], hh = <span class="hljs-number">0</span>, tt = <span class="hljs-number">-1</span>;<br><br><span class="hljs-comment">// 向队尾插入一个数</span><br>q[++tt] = x;<br><br><span class="hljs-comment">// 从队头弹出一个数</span><br>hh++;<br><br><span class="hljs-comment">// 队头的值</span><br>q[hh];<br><br><span class="hljs-comment">// 判断队列是否为空，如果 hh &lt;= tt，则表示不为空</span><br><span class="hljs-keyword">if</span> (hh &lt;= tt)<br>&#123;<br><br>&#125;<br></code></pre></td></tr></table></figure><h3 id="循环队列">2. 循环队列</h3><p><strong>模板</strong></p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">// hh 表示队头，tt表示队尾的后一个位置</span><br><span class="hljs-type">int</span> q[N], hh = <span class="hljs-number">0</span>, tt = <span class="hljs-number">0</span>;<br><br><span class="hljs-comment">// 向队尾插入一个数</span><br>q[tt++] = x;<br><span class="hljs-keyword">if</span> (tt == N) tt = <span class="hljs-number">0</span>;<br><br><span class="hljs-comment">// 从队头弹出一个数</span><br>hh++;<br><span class="hljs-keyword">if</span> (hh == N) hh = <span class="hljs-number">0</span>;<br><br><span class="hljs-comment">// 队头的值</span><br>q[hh];<br><br><span class="hljs-comment">// 判断队列是否为空，如果hh != tt，则表示不为空</span><br><span class="hljs-keyword">if</span> (hh != tt)<br>&#123;<br><br>&#125;<br></code></pre></td></tr></table></figure><h2 id="单调栈">3. 单调栈</h2><blockquote><p><strong>常见题型：</strong>给定一个序列，找到这个序列中每一个数左边离它最近的数的位置。</p></blockquote><p><strong>模板</strong></p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">// 常见模型：找出每个数左边离它最近的比它大/小的数</span><br><span class="hljs-type">int</span> tt = <span class="hljs-number">0</span>;<br><span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i ++ )<br>&#123;<br>    <span class="hljs-keyword">while</span> (tt &amp;&amp; <span class="hljs-built_in">check</span>(stk[tt], i)) tt -- ;<br>    stk[ ++ tt] = i;<br>&#125;<br></code></pre></td></tr></table></figure><h2 id="单调队列">4. 单调队列</h2><blockquote><p><strong>最经典的应用：</strong>求滑动窗口中的最大值或最小值</p></blockquote><p><strong>模板</strong></p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">// 常见模型：找出滑动窗口中的最大值/最小值</span><br><span class="hljs-type">int</span> hh = <span class="hljs-number">0</span>, tt = <span class="hljs-number">-1</span>;<br><span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i ++ )<br>&#123;<br>    <span class="hljs-keyword">while</span> (hh &lt;= tt &amp;&amp; <span class="hljs-built_in">check_out</span>(q[hh])) hh ++ ;  <span class="hljs-comment">// 判断队头是否滑出窗口</span><br>    <span class="hljs-keyword">while</span> (hh &lt;= tt &amp;&amp; <span class="hljs-built_in">check</span>(q[tt], i)) tt -- ;<br>    q[ ++ tt] = i;<br>&#125;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Algorithm</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>栈</tag>
+      
+      <tag>队列</tag>
+      
+      <tag>单调栈</tag>
+      
+      <tag>单调队列</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>链表与邻接表</title>
+    <link href="/2023/07/08/%E9%93%BE%E8%A1%A8%E4%B8%8E%E9%82%BB%E6%8E%A5%E8%A1%A8/"/>
+    <url>/2023/07/08/%E9%93%BE%E8%A1%A8%E4%B8%8E%E9%82%BB%E6%8E%A5%E8%A1%A8/</url>
+    
+    <content type="html"><![CDATA[<h1 id="链表与邻接表树与图的存储">链表与邻接表：树与图的存储</h1><ul><li><p>使用<strong>数组</strong>模拟（静态链表）</p></li><li><p>使用<strong>指针</strong>+<strong>结构体</strong>模拟（动态链表、在笔试题中一般不会用）</p></li></ul><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">struct</span> <span class="hljs-title class_">Node</span><br>&#123;<br>    <span class="hljs-type">int</span> val;<br>    Node *next;<br>&#125;<br><span class="hljs-keyword">new</span> <span class="hljs-built_in">Node</span>(); <span class="hljs-comment">// 非常慢</span><br></code></pre></td></tr></table></figure><h2 id="使用数组模拟单链表">1. 使用数组模拟单链表</h2><p>在算法题中，使用最多的单链表是邻接表（n个链表）</p><h3 id="单链表与邻接表">1.1 单链表与邻接表</h3><p><strong>邻接表的用途：</strong>存储数与图</p><p>在单链表中，用<code>e[ ]</code>表示该结点的值，用<code>ne[ ]</code>表示该结点的下一结点的编号。</p><figure><img src="/.io//image-20230711173901950.png" alt="image-20230711173901950"><figcaption aria-hidden="true">image-20230711173901950</figcaption></figure><h3 id="单链表的优缺点单链表是只往后看的">1.2 单链表的优缺点（单链表是只往后看的）</h3><p><strong>优点：</strong>单链表可以用 <span class="math inline">\(O(1)\)</span> 的时间找到下一个结点的位置</p><p><strong>缺点：</strong>单链表不能用 <span class="math inline">\(O(1)\)</span> 的时间找到上一个结点的位置（只能从头开始遍历）</p><h3 id="模板">1.3 模板</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">// head存储链表头，e[]存储节点的值，ne[]存储节点的next指针，idx表示当前用到了哪个节点</span><br><span class="hljs-type">int</span> head, e[N], ne[N], idx;<br><br><span class="hljs-comment">// 初始化</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">init</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    head = <span class="hljs-number">-1</span>;<br>    idx = <span class="hljs-number">0</span>;<br>&#125;<br><br><span class="hljs-comment">// 在链表头插入一个数a</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">insert</span><span class="hljs-params">(<span class="hljs-type">int</span> a)</span></span><br><span class="hljs-function"></span>&#123;<br>    e[idx] = a, ne[idx] = head, head = idx++;<br>&#125;<br><br><span class="hljs-comment">// 在链表第k个结点后面插入一个数a</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">insert_k</span><span class="hljs-params">(<span class="hljs-type">int</span> k, <span class="hljs-type">int</span> a)</span></span><br><span class="hljs-function"></span>&#123;<br>    e[idx] = a, ne[idx] = ne[k], ne[k] = idx++;<br>&#125;<br><br><span class="hljs-comment">// 将头结点删除，需要保证头结点存在</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">remove</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    head = ne[head];<br>&#125;<br><br><span class="hljs-comment">// 将下标是k的点后面的点删掉</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">remove_k</span><span class="hljs-params">(<span class="hljs-type">int</span> k)</span></span><br><span class="hljs-function"></span>&#123;<br>    ne[k] = ne[ne[k]];<br>&#125;<br></code></pre></td></tr></table></figure><h2 id="使用数组模拟双链表">2. 使用数组模拟双链表</h2><p><strong>双链表的用途：</strong>优化某些问题</p><ul><li>双链表与单链表的区别在于：单链表只有一个方向，双链表是双向的</li></ul><h3 id="模板-1"><strong>模板</strong></h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">// e[]表示节点的值，l[]表示节点的左指针，r[]表示节点的右指针，idx表示当前用到了哪个节点</span><br><span class="hljs-type">int</span> e[N], l[N], r[N], idx;<br><br><span class="hljs-comment">// 初始化</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">init</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-comment">//0是左端点，1是右端点</span><br>    r[<span class="hljs-number">0</span>] = <span class="hljs-number">1</span>, l[<span class="hljs-number">1</span>] = <span class="hljs-number">0</span>;<br>    idx = <span class="hljs-number">2</span>;<br>&#125;<br><br><span class="hljs-comment">// 在节点a的右边插入一个数x</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">insert</span><span class="hljs-params">(<span class="hljs-type">int</span> a, <span class="hljs-type">int</span> x)</span></span><br><span class="hljs-function"></span>&#123;<br>    e[idx] = x;<br>    l[idx] = a, r[idx] = r[a];<br>    l[r[a]] = idx, r[a] = idx ++ ;<br>&#125;<br><br><span class="hljs-comment">// 删除节点a</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">remove</span><span class="hljs-params">(<span class="hljs-type">int</span> a)</span></span><br><span class="hljs-function"></span>&#123;<br>    l[r[a]] = l[a];<br>    r[l[a]] = r[a];<br>&#125;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Algorithm</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>单链表</tag>
+      
+      <tag>双链表</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>区间合并</title>
+    <link href="/2023/07/04/%E5%8C%BA%E9%97%B4%E5%90%88%E5%B9%B6/"/>
+    <url>/2023/07/04/%E5%8C%BA%E9%97%B4%E5%90%88%E5%B9%B6/</url>
+    
+    <content type="html"><![CDATA[<h1 id="区间合并">区间合并</h1><p><strong>应用场景：</strong>将 <span class="math inline">\(n\)</span> 个区间中，所有有交集的区间合并（假设两个区间只有端点相交的，那么他们也是可以合并的）。</p><p><img src="https://s1.ax1x.com/2023/07/15/pC5Qrvt.png" style="zoom:80%;"></p><p><strong>算法步骤：</strong></p><ol type="1"><li><p>按区间的左端点排序</p></li><li><p>扫描整个区间，把所有有交集的区间合并</p></li></ol><h2 id="模板">模板</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">// 将所有存在交集的区间合并</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">merge</span><span class="hljs-params">(vector&lt;PII&gt; &amp;segs)</span></span><br><span class="hljs-function"></span>&#123;<br>    vector&lt;PII&gt; res;<br>    <span class="hljs-built_in">sort</span>(segs.<span class="hljs-built_in">begin</span>(), segs.<span class="hljs-built_in">end</span>());<span class="hljs-comment">//区间按照做端点排序</span><br>    <span class="hljs-type">int</span> st = <span class="hljs-number">-2e9</span>, ed = <span class="hljs-number">-2e9</span>;<span class="hljs-comment">// 定义+无穷和-无穷</span><br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> seg : segs)<br>        <span class="hljs-keyword">if</span> (ed &lt; seg.first)<br>        &#123;<br>            <span class="hljs-keyword">if</span> (st != <span class="hljs-number">-2e9</span>) res.<span class="hljs-built_in">push_back</span>(&#123;st, ed&#125;);<br>            st = seg.first, ed = seg.second;<br>        &#125;<br>        <span class="hljs-keyword">else</span> ed = <span class="hljs-built_in">max</span>(ed, seg.second);<br>    <span class="hljs-keyword">if</span> (st != <span class="hljs-number">-2e9</span>) res.<span class="hljs-built_in">push_back</span>(&#123;st, ed&#125;);<br>    segs = res;<br>&#125;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Algorithm</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>区间合并</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>离散化</title>
+    <link href="/2023/07/04/%E7%A6%BB%E6%95%A3%E5%8C%96/"/>
+    <url>/2023/07/04/%E7%A6%BB%E6%95%A3%E5%8C%96/</url>
+    
+    <content type="html"><![CDATA[<h1 id="离散化">离散化</h1><blockquote><p>特指整数的离散化、保序的离散化</p></blockquote><p><strong>序列特点：</strong>值域较大（<span class="math inline">\(0\)</span> ~ <span class="math inline">\(10^9\)</span>）、个数较少（可能只有<span class="math inline">\(10^5\)</span>个数）</p><p>有些题目可能要以这些序列的值为下标来做，因此需要把序列映射到从 <span class="math inline">\(0\)</span> 开始的连续的自然数。</p><p><img src="https://s1.ax1x.com/2023/07/15/pC5QM4J.png" style="zoom:80%;"></p><p><strong>离散化中常见的两个问题：</strong></p><ol type="1"><li><code>a[]</code>中可能有重复元素 -&gt; 去重</li><li>如何计算<code>x</code>离散化后的值 -&gt; 二分查找</li></ol><h2 id="模板">模板</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs c++">vector&lt;<span class="hljs-type">int</span>&gt; alls; <span class="hljs-comment">// 存储所有待离散化的值</span><br><span class="hljs-built_in">sort</span>(alls.<span class="hljs-built_in">begin</span>(), alls.<span class="hljs-built_in">end</span>()); <span class="hljs-comment">// 将所有值排序</span><br>alls.<span class="hljs-built_in">erase</span>(<span class="hljs-built_in">unique</span>(alls.<span class="hljs-built_in">begin</span>(), alls.<span class="hljs-built_in">end</span>()), alls.<span class="hljs-built_in">end</span>());   <span class="hljs-comment">// 去掉重复元素</span><br><br><span class="hljs-comment">// 二分求出x对应的离散化的值</span><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">find</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span> <span class="hljs-comment">// 找到第一个大于等于x的位置</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-type">int</span> l = <span class="hljs-number">0</span>, r = alls.<span class="hljs-built_in">size</span>() - <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">while</span> (l &lt; r)<br>    &#123;<br>        <span class="hljs-type">int</span> mid = l + r &gt;&gt; <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">if</span> (alls[mid] &gt;= x) r = mid;<br>        <span class="hljs-keyword">else</span> l = mid + <span class="hljs-number">1</span>;<br>    &#125;<br>    <span class="hljs-keyword">return</span> r + <span class="hljs-number">1</span>; <span class="hljs-comment">// 映射到1, 2, ...n</span><br>&#125;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Algorithm</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>离散化</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>位运算</title>
+    <link href="/2023/07/04/%E4%BD%8D%E8%BF%90%E7%AE%97/"/>
+    <url>/2023/07/04/%E4%BD%8D%E8%BF%90%E7%AE%97/</url>
+    
+    <content type="html"><![CDATA[<h1 id="位运算">位运算</h1><p>常用的两种位运算的操作：求 <span class="math inline">\(n\)</span> 的第 <span class="math inline">\(k\)</span> 位数字和 <span class="math inline">\(n\)</span> 的最后一位</p><h2 id="n的二进制表示中第k位">1. n的二进制表示中第k位</h2><p><strong>思路：</strong></p><ol type="1"><li>先把第 <span class="math inline">\(k\)</span> 位移到最后一位，即<code>n &gt;&gt; k</code></li><li>看一下最低位是几，<code>x &amp; 1</code></li></ol><p>结合①和②，得到公式：<code>n &gt;&gt; k &amp; 1</code></p><blockquote><p>位移运算不会改变原数据的值，即<code>n &gt;&gt; k</code>前后<code>n</code>的值不变</p></blockquote><h2 id="n的二进制表示中最后一位">2. n的二进制表示中最后一位</h2><p><code>lowbit()</code>是树状数组的基本操作，<code>lowbit(x)</code>的作用是返回<code>x</code>的最后一位<code>1</code>。例如：如果二进制数<code>x = 1010</code>，则<code>lowbit(x)</code>返回的是<code>10</code>，即十进制数<code>2</code>；如果二进制数<code>x = 101000</code>，则<code>lowbit(x)</code>返回的是<code>1000</code>，即十进制数<code>8</code>。</p><p><strong>实现：</strong><code>lowbit(x) = x &amp; -x</code>。其中，<code>-x</code>是<code>x</code>的补码，即<code>x</code>取反加一</p><p><strong>应用：</strong>统计<code>x</code>的二进制表示中<code>1</code>的个数。每次把最后一位<code>1</code>减掉，当<code>x</code>的值为<code>0</code>时停止，统计循环次数。</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">// 求n的第k位数字: </span><br>n &gt;&gt; k &amp; <span class="hljs-number">1</span><br><span class="hljs-comment">// 返回n的最后一位1：</span><br><span class="hljs-built_in">lowbit</span>(n) = n &amp; -n<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Algorithm</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>二进制的第k位</tag>
+      
+      <tag>lowbit( )</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>双指针算法</title>
+    <link href="/2023/07/03/%E5%8F%8C%E6%8C%87%E9%92%88%E7%AE%97%E6%B3%95/"/>
+    <url>/2023/07/03/%E5%8F%8C%E6%8C%87%E9%92%88%E7%AE%97%E6%B3%95/</url>
+    
+    <content type="html"><![CDATA[<h1 id="双指针算法">双指针算法</h1><ul><li><p><strong>第一类：</strong>指向的是<strong>两个序列</strong>，例如：归并排序中的双指针</p></li><li><p><strong>第二类：</strong>指向的是<strong>一个序列</strong>（常见），例如：快速排序的双指针</p></li></ul><h2 id="核心思想">1. 核心思想</h2><p>将下面的朴素算法的时间复杂度优化到 <span class="math inline">\(O(n)\)</span></p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++)<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j = <span class="hljs-number">0</span>; j &lt; n; j++)<br>        <span class="hljs-comment">// 操作</span><br></code></pre></td></tr></table></figure><blockquote><p><strong>为什么双指针算法的时间复杂度是 <span class="math inline">\(O(n)\)</span> ?</strong></p><p>双指针算法的时间复杂度为 <span class="math inline">\(O(n)\)</span> 的原因是，它通常在一个循环中使用两个指针进行迭代，而这两个指针相对于输入规模 <span class="math inline">\(n\)</span> 的数量级是线性的。</p><p>在双指针算法中，指针通常从输入序列的两端开始，然后向中间移动，根据特定的条件调整指针的位置。算法的终止条件可能是两个指针相遇或到达特定位置。</p><p>由于每次迭代中，指针的移动都是以固定的步长进行的，而且指针从两个方向同时移动，因此整个算法的执行时间与输入规模 <span class="math inline">\(n\)</span> 成线性关系。换句话说，算法的运行时间随着输入规模的增加而线性增长。</p><p>需要注意的是，虽然双指针算法的时间复杂度通常是 <span class="math inline">\(O(n)\)</span>，但也可以有特殊情况下的变体，其时间复杂度可能是 <span class="math inline">\(O(n^2)\)</span> 或其他不同的复杂度。这取决于算法的具体实现和问题的特定要求。但是，一般而言，双指针算法的时间复杂度是线性的，即 <span class="math inline">\(O(n)\)</span>。</p></blockquote><h2 id="例子">2. 例子</h2><p><strong>题目要求：</strong></p><p>输入一个字符串，其中包含多个单词，每个单词用空格隔开，输出每个单词。（假定字符串开始时没有空格，且每个单词之间只有一个空格）</p><p><strong>分析：</strong></p><p><img src="https://s1.ax1x.com/2023/07/15/pC5M5nK.png" style="zoom:80%;"></p><p><strong>代码：</strong></p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;string.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-type">char</span> str[<span class="hljs-number">1000</span>];<br>    <span class="hljs-built_in">gets</span>(str);<br>    <span class="hljs-type">int</span> n = <span class="hljs-built_in">strlen</span>(str);<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++)<br>    &#123;<br>        <span class="hljs-type">int</span> j = i;<br>        <span class="hljs-keyword">while</span> (j &lt; n &amp;&amp; str[j] != <span class="hljs-string">&#x27; &#x27;</span>) j++;<br>        <span class="hljs-comment">// 这道题的具体逻辑</span><br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> k = i; k &lt; j; k++) cout &lt;&lt; str[k];<br>        cout &lt;&lt; endl;<br>        i = j;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure><h2 id="模板">3. 模板</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>, j = <span class="hljs-number">0</span>; i &lt; n; i++ )<br>&#123;<br>    <span class="hljs-keyword">while</span> (j &lt; i &amp;&amp; <span class="hljs-built_in">check</span>(i, j)) j++ ;<br>    <span class="hljs-comment">// 具体问题的逻辑</span><br>&#125;<br><span class="hljs-comment">// 常见问题分类：</span><br>    <span class="hljs-comment">// (1) 对于一个序列，用两个指针维护一段区间</span><br>    <span class="hljs-comment">// (2) 对于两个序列，维护某种次序，比如归并排序中合并两个有序序列的操作</span><br></code></pre></td></tr></table></figure><p><strong>总结（双指针算法的实现思路）</strong></p><ol type="1"><li>写出题目对应的暴力解法（时间复杂度为 <span class="math inline">\(O(n^2)\)</span>），寻找两个循环索引 <span class="math inline">\(i、j\)</span> 之间的单调关系</li><li>如果有单调关系的话，利用其单调关系，把状态数量由 <span class="math inline">\(n^2\)</span> 变成 <span class="math inline">\(n\)</span>，从而把时间复杂度由 <span class="math inline">\(O(n^2)\)</span> 变成 <span class="math inline">\(O(n)\)</span></li></ol>]]></content>
+    
+    
+    <categories>
+      
+      <category>Algorithm</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>双指针算法</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>前缀和与差分</title>
+    <link href="/2023/07/02/%E5%89%8D%E7%BC%80%E5%92%8C%E4%B8%8E%E5%B7%AE%E5%88%86/"/>
+    <url>/2023/07/02/%E5%89%8D%E7%BC%80%E5%92%8C%E4%B8%8E%E5%B7%AE%E5%88%86/</url>
+    
+    <content type="html"><![CDATA[<h1 id="前缀和与差分">前缀和与差分</h1><p><strong>差分：</strong><span class="math inline">\(a_1\)</span>、<span class="math inline">\(a_2\)</span>、<span class="math inline">\(a_3\)</span>、……、<span class="math inline">\(a_n\)</span> （下标从 <span class="math inline">\(1\)</span> 开始）</p><p><strong>前缀和：</strong><span class="math inline">\(S_1\)</span>、<span class="math inline">\(S_2\)</span>、<span class="math inline">\(S_3\)</span>、……、<span class="math inline">\(S_n\)</span> 其中，<span class="math inline">\(S_i=a_1+a_2+a_3+...+a_i\)</span> （下标从 <span class="math inline">\(1\)</span> 开始，定义 <span class="math inline">\(S_0=0\)</span>）</p><h2 id="前缀和">1. 前缀和</h2><h4 id="涉及到的两个问题">1. 涉及到的两个问题</h4><ol type="1"><li><p>如何求 <span class="math inline">\(S_i\)</span> ：</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">// 一维前缀和的初始化</span><br><span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++)<br>s[i] = s[i - <span class="hljs-number">1</span>] + a[i];<span class="hljs-comment">// 前缀和的初始化</span><br><span class="hljs-comment">// 二维前缀和的初始化</span><br><span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++)<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j = <span class="hljs-number">1</span>; j &lt;= m; j++)<br>        s[i][j] = a[i][j] + s[i - <span class="hljs-number">1</span>][j] + s[i][j - <span class="hljs-number">1</span>] - s[i - <span class="hljs-number">1</span>][j - <span class="hljs-number">1</span>];<br></code></pre></td></tr></table></figure></li><li><p>前缀和数组 <span class="math inline">\(S_i\)</span> 的作用：快速求出原数组中的一段数的和。</p><blockquote><p><strong>前缀和数组作用的例子：</strong>假设题目要求求出数组中<code>[l, r]</code>的数的和（区间和的计算）</p><ul><li>如果没有前缀和数组，则需循环一遍求解，此时时间复杂度为 <span class="math inline">\(O(n)\)</span></li><li>如果有前缀和数组，则可直接计算得出 <span class="math inline">\(S_r-S_{l-1}\)</span>，此时时间复杂度为 <span class="math inline">\(O(1)\)</span></li></ul></blockquote></li></ol><h4 id="为什么前缀和的下标从1开始">2. 为什么前缀和的下标从1开始</h4><p><strong>主要是处理边界问题：</strong>当需要求数组<code>[1, t]</code>的数的和的时候，可以直接通过 <span class="math inline">\(S_t-S_0\)</span>，不用考虑边界问题。同时，这也是把 <span class="math inline">\(S_0\)</span> 定义为 <span class="math inline">\(0\)</span> 的原因。虽然该问题可以直接以 <span class="math inline">\(S_t\)</span> 为答案，但是为了统一计算公式，选择这种计算方法。</p><h3 id="一维前缀和">1.1 一维前缀和</h3><p>作用：<strong>快速求出某一区间的和</strong></p><p><strong>原数组：</strong><span class="math inline">\(a_i\)</span></p><p><strong>前缀和数组：</strong><span class="math inline">\(S_i\)</span></p><p><strong>区间和计算公式：</strong><span class="math inline">\([l,\ r]=S_r-S_{l-1}\)</span></p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c++">S[i] = a[<span class="hljs-number">1</span>] + a[<span class="hljs-number">2</span>] + ... a[i]<br>a[l] + ... + a[r] = S[r] - S[l - <span class="hljs-number">1</span>]<br></code></pre></td></tr></table></figure><h3 id="二维前缀和">1.2 二维前缀和</h3><p>与一维前缀和类似，二维前缀和是为了<strong>快速求出某一子矩阵的和</strong></p><p><strong>原数组：</strong><span class="math inline">\(a_{ij}\)</span></p><p><strong>前缀和数组：</strong><span class="math inline">\(S_{ij}\)</span></p><p><strong>子矩阵和计算公式：</strong> <span class="math display">\[\left[ \begin{matrix}    \left( x_1, y_1 \right)&amp;        \left( x_1, y_2 \right)\\    \left( x_2, y_1 \right)&amp;        \left( x_2, y_2 \right)\\\end{matrix} \right] =S_{x_2y_2}-S_{x_1-1 y_2}-S_{x_2\,\,y_1-1}+S_{x_1-1 y_1-1}\]</span> <img src="https://s1.ax1x.com/2023/07/15/pC5Mapn.png" style="zoom:80%;"></p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c++">S[i, j] =  <span class="hljs-comment">// 第i行j列格子左上部分所有元素的和</span><br><span class="hljs-comment">// 以(x1, y1)为左上角，(x2, y2)为右下角的子矩阵的和为：</span><br>S[x2, y2] - S[x1 - <span class="hljs-number">1</span>, y2] - S[x2, y1 - <span class="hljs-number">1</span>] + S[x1 - <span class="hljs-number">1</span>, y1 - <span class="hljs-number">1</span>]<br></code></pre></td></tr></table></figure><p><img src="https://s1.ax1x.com/2023/07/15/pC5Mw60.png" style="zoom:80%;"></p><h2 id="差分">2. 差分</h2><h4 id="差分的作用">1. 差分的作用</h4><p>对于数组 <span class="math inline">\(a_i\ (i=1,2,3,…,n)\)</span>，其前缀和为 <span class="math inline">\(s_i\ (i = 1,2,3,…,n)\)</span>。<span class="math inline">\(a_i\)</span> 为 <span class="math inline">\(s_i\)</span> 的差分，满足 <span class="math inline">\(a_i\ = s_i \ - \ s_{i-1}\)</span>，即： <span class="math display">\[a_1 = s_1\\a_2 = s_2-s_1\\a_3 = s_3-s_2\\a_4 = s_4-s_3\\……\\a_n = s_n-s_{n-1}\]</span> <strong>作用：</strong>对于前缀和数组 <span class="math inline">\(s_i\)</span> ，如果需要使其从第 <span class="math inline">\(l\)</span> 项开始到第 <span class="math inline">\(r\)</span> 项每项都增加一个常数 <span class="math inline">\(C\)</span> 。如果直接对前缀和数组 <span class="math inline">\(s_i\)</span> 操作的话，即对 <span class="math inline">\(s_i\ (i = l,l+1,…,r)\)</span> 每一项都增加一个常数 <span class="math inline">\(C\)</span>，程序的时间复杂度为 <span class="math inline">\(O(n)\)</span>；如果对差分数组 <span class="math inline">\(a_i\)</span> 操作的话，即使 <span class="math inline">\(a_l + C\)</span> 、<span class="math inline">\(a_{r+1} - C\)</span>，程序的时间复杂度为 <span class="math inline">\(O(1)\)</span>。</p><h3 id="一维差分">2.1 一维差分</h3><p><strong>作用：</strong>给一维数组的一段加上一个值</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c++">给区间[l, r]中的每个数加上c：B[l] += c, B[r + <span class="hljs-number">1</span>] -= c<br></code></pre></td></tr></table></figure><blockquote><p><strong>过程：</strong></p><ol type="1"><li><p>定义前缀和数组，并输入初值（给 <span class="math inline">\(s_i\)</span> 赋初值）</p></li><li><p>根据前缀和数组的值，给差分数组赋初值（给 <span class="math inline">\(a_i\)</span> 赋值）</p><p>对于差分数组中的第 <span class="math inline">\(i\)</span> 个元素，采用插入的方式：对于区间<code>[i,i]</code>插入<code>s[i]</code>，即<code>a[i] + s[i]</code>、<code>a[i+1] - s[i]</code></p></li><li><p>根据差分数组，求出其前缀和即可</p></li></ol></blockquote><h3 id="二维差分">2.2 二维差分</h3><p><strong>作用：</strong>给二维数组数组的一个子矩阵加上一个值</p><p><img src="https://s1.ax1x.com/2023/07/15/pC5Ms7F.png" style="zoom:80%;"></p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c++">给以(x1, y1)为左上角，(x2, y2)为右下角的子矩阵中的所有元素加上c：<br>S[x1, y1] += c, S[x2 + <span class="hljs-number">1</span>, y1] -= c, S[x1, y2 + <span class="hljs-number">1</span>] -= c, S[x2 + <span class="hljs-number">1</span>, y2 + <span class="hljs-number">1</span>] += c<br></code></pre></td></tr></table></figure><blockquote><p>过程同一维差分，只不过计算差分数组的方式不同</p></blockquote>]]></content>
+    
+    
+    <categories>
+      
+      <category>Algorithm</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>前缀和</tag>
+      
+      <tag>差分</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>高精度</title>
     <link href="/2023/07/01/%E9%AB%98%E7%B2%BE%E5%BA%A6/"/>
     <url>/2023/07/01/%E9%AB%98%E7%B2%BE%E5%BA%A6/</url>
