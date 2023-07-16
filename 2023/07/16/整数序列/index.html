@@ -16,27 +16,28 @@
   <meta name="author" content="Zehao Zhang">
   <meta name="keywords" content="">
   
-    <meta name="description" content="AcWing3302. 表达式求值  原题链接：3302. 表达式求值 - AcWing题库  一、题目 给定一个表达式，其中运算符仅包含 +,-,*,&#x2F;（加 减 乘 整除），可能包含括号，请你求出表达式的最终值。 注意：  数据保证给定的表达式合法。 题目保证符号 - 只作为减号出现，不会作为负号出现，例如，-1+2,(2+2)*(-(1+1)+2) 之类表达式均不会出现。">
+    <meta name="description" content="AcWing3717. 整数序列  原题链接：3717. 整数序列 - AcWing题库  一、题目 很多整数可以由一段连续的正整数序列（至少两个数）相加而成，比如\(25&#x3D;3+4+5+6+7&#x3D;12+13\)。 输入一个整数 \(N\)，输出 \(N\) 的全部正整数序列，如果没有则输出 NONE。 输入格式 一个整数 \(N\)。 输出格式 每行输出一个满足条件的整数序列。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="AcWing3302. 表达式求值">
-<meta property="og:url" content="http://ihrd.github.io/2023/07/12/%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%B1%82%E5%80%BC/index.html">
+<meta property="og:title" content="AcWing3717. 整数序列">
+<meta property="og:url" content="http://ihrd.github.io/2023/07/16/%E6%95%B4%E6%95%B0%E5%BA%8F%E5%88%97/index.html">
 <meta property="og:site_name" content="IHRD">
-<meta property="og:description" content="AcWing3302. 表达式求值  原题链接：3302. 表达式求值 - AcWing题库  一、题目 给定一个表达式，其中运算符仅包含 +,-,*,&#x2F;（加 减 乘 整除），可能包含括号，请你求出表达式的最终值。 注意：  数据保证给定的表达式合法。 题目保证符号 - 只作为减号出现，不会作为负号出现，例如，-1+2,(2+2)*(-(1+1)+2) 之类表达式均不会出现。">
+<meta property="og:description" content="AcWing3717. 整数序列  原题链接：3717. 整数序列 - AcWing题库  一、题目 很多整数可以由一段连续的正整数序列（至少两个数）相加而成，比如\(25&#x3D;3+4+5+6+7&#x3D;12+13\)。 输入一个整数 \(N\)，输出 \(N\) 的全部正整数序列，如果没有则输出 NONE。 输入格式 一个整数 \(N\)。 输出格式 每行输出一个满足条件的整数序列。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://s1.ax1x.com/2023/07/16/pCInrVg.png">
-<meta property="article:published_time" content="2023-07-12T03:51:35.000Z">
-<meta property="article:modified_time" content="2023-07-16T05:55:27.416Z">
+<meta property="og:image" content="https://s1.ax1x.com/2023/07/17/pCI4oi6.png">
+<meta property="article:published_time" content="2023-07-16T14:07:08.000Z">
+<meta property="article:modified_time" content="2023-07-16T16:14:41.434Z">
 <meta property="article:author" content="Zehao Zhang">
-<meta property="article:tag" content="栈">
-<meta property="article:tag" content="表达式求值">
+<meta property="article:tag" content="二分">
+<meta property="article:tag" content="数学知识">
+<meta property="article:tag" content="试除法">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://s1.ax1x.com/2023/07/16/pCInrVg.png">
+<meta name="twitter:image" content="https://s1.ax1x.com/2023/07/17/pCI4oi6.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>AcWing3302. 表达式求值 - IHRD</title>
+  <title>AcWing3717. 整数序列 - IHRD</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -233,7 +234,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="AcWing3302. 表达式求值"></span>
+            <span id="subtitle" data-typed-text="AcWing3717. 整数序列"></span>
           
         </div>
 
@@ -244,8 +245,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-07-12 11:51" pubdate>
-          2023年7月12日 中午
+        <time datetime="2023-07-16 22:07" pubdate>
+          2023年7月16日 晚上
         </time>
       </span>
     
@@ -256,7 +257,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2k 字
+          2.7k 字
         
       </span>
     
@@ -267,7 +268,7 @@
         
         
         
-          17 分钟
+          23 分钟
         
       </span>
     
@@ -304,46 +305,69 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">AcWing3302. 表达式求值</h1>
+            <h1 id="seo-header">AcWing3717. 整数序列</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="acwing3302.-表达式求值">AcWing3302. 表达式求值</h1>
+                <h1 id="acwing3717.-整数序列">AcWing3717. 整数序列</h1>
 <blockquote>
-<p><strong>原题链接：</strong><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/3305/">3302. 表达式求值 - AcWing题库</a></p>
+<p>原题链接：<a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/description/3720/">3717. 整数序列 - AcWing题库</a></p>
 </blockquote>
 <h2 id="一题目">一、题目</h2>
-<p>给定一个表达式，其中运算符仅包含 <code>+,-,*,/</code>（加 减 乘 整除），可能包含括号，请你求出表达式的最终值。</p>
-<p><strong>注意：</strong></p>
-<ul>
-<li>数据保证给定的表达式合法。</li>
-<li>题目保证符号 <code>-</code> 只作为减号出现，不会作为负号出现，例如，<code>-1+2</code>,<code>(2+2)*(-(1+1)+2)</code> 之类表达式均不会出现。</li>
-<li>题目保证表达式中所有数字均为正整数。</li>
-<li>题目保证表达式在中间计算过程以及结果中，均不超过 <span class="math inline">\(2^{31}−1\)</span>。</li>
-<li>题目中的整除是指向 00 取整，也就是说对于大于 00 的结果向下取整，例如 <span class="math inline">\(5/3=1\)</span>，对于小于 <span class="math inline">\(0\)</span> 的结果向上取整，例如 <span class="math inline">\(5/(1−4)=−1\)</span>。</li>
-<li>C++和Java中的整除默认是向零取整；Python中的整除<code>//</code>默认向下取整，因此Python的<code>eval()</code>函数中的整除也是向下取整，在本题中不能直接使用。</li>
-</ul>
+<p>很多整数可以由一段连续的<strong>正整数</strong>序列（至少两个数）相加而成，比如<span class="math inline">\(25=3+4+5+6+7=12+13\)</span>。</p>
+<p>输入一个整数 <span class="math inline">\(N\)</span>，输出 <span class="math inline">\(N\)</span> 的全部正整数序列，如果没有则输出 <code>NONE</code>。</p>
 <p><strong>输入格式</strong></p>
-<p>共一行，为给定表达式。</p>
+<p>一个整数 <span class="math inline">\(N\)</span>。</p>
 <p><strong>输出格式</strong></p>
-<p>共一行，为表达式的结果。</p>
+<p>每行输出一个满足条件的整数序列。</p>
+<p>序列内部元素从小到大排序。</p>
+<p>优先输出首项更小的序列。</p>
 <p><strong>数据范围</strong></p>
-<p>表达式的长度不超过 <span class="math inline">\(10^5\)</span>。</p>
+<p><span class="math inline">\(2≤N≤10^7\)</span></p>
 <p><strong>输入样例：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs input">(2+2)*(1+1)<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs input">25<br></code></pre></td></tr></table></figure>
 <p><strong>输出样例：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs output">8<br></code></pre></td></tr></table></figure>
-<h2 id="二样例分析">二、样例分析</h2>
-<p>题目中所给的表达式为<strong>中缀表达式</strong>，先将其转化为<strong>中缀表达式树</strong>（所有内部结点都是运算符、所有叶子结点都是数）：</p>
-<p><img src="https://s1.ax1x.com/2023/07/16/pCInwKf.png" srcset="/img/loading.gif" lazyload style="zoom:100%;"></p>
-<p>中序遍历树得到的中缀表达式要加括号（保证运算符的优先级），即结果为 <span class="math inline">\((2+2)×(1+1)\)</span> 而非 <span class="math inline">\(2+2×1+1\)</span> ；后序遍历树得到的后缀表达式不需要加括号，即结果为 <span class="math inline">\(2\ 2+1\ 1+×\)</span> 。</p>
-<p>可以通过<strong>递归</strong>的方式求解：</p>
-<p><img src="https://s1.ax1x.com/2023/07/16/pCInBqS.png" srcset="/img/loading.gif" lazyload style="zoom:100%;"></p>
-<p><strong>中序遍历+栈：</strong></p>
-<p><img src="https://s1.ax1x.com/2023/07/16/pCInrVg.png" srcset="/img/loading.gif" lazyload style="zoom:100%;"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs output">3 4 5 6 7<br>12 13<br></code></pre></td></tr></table></figure>
+<h2 id="二分析">二、分析</h2>
+<h4 id="二分">二分</h4>
+<p>枚举首项，通过二分找到尾项，使满足 <span class="math inline">\(n=\frac{(a+b)n}{2}\)</span>。其中，<span class="math inline">\(a\)</span> 为首项、<span class="math inline">\(b\)</span> 为尾项。</p>
+<h4 id="数学知识推公式-分解质因数">数学知识（推公式 + 分解质因数）</h4>
+<blockquote>
+<p>等差数列前 <span class="math inline">\(n\)</span> 项和公式：$ S_n=na_1+{d} $</p>
+</blockquote>
+<p>设答案序列首项为 <span class="math inline">\(a\)</span>，共 <span class="math inline">\(k\)</span> 项，且有题目知公差为 <span class="math inline">\(1\)</span>，则所求的序列为 <span class="math inline">\(a\)</span>、<span class="math inline">\(a+1\)</span>、<span class="math inline">\(a+2\)</span>、<span class="math inline">\(…\)</span>、<span class="math inline">\(a+k-1\)</span>。</p>
+<p>由等差数列前 <span class="math inline">\(n\)</span> 项和公式得：<span class="math inline">\(n=ka+{\frac{k\left( k-1 \right)}{2}}\)</span></p>
+<p>从而得到：<span class="math inline">\(2n=k(2a+k-1)\)</span></p>
+<p>设 <span class="math inline">\(x=k\)</span>、<span class="math inline">\(y=2a+k-1\)</span>，则 <span class="math inline">\(xy=2n\)</span> 。</p>
+<p><strong>推条件：</strong>由题意知，首项 <span class="math inline">\(a&gt;0\)</span> ，则 <span class="math inline">\(2a=y-x+1&gt;0\)</span>，<span class="math inline">\(y&gt;x-1\)</span>，即 <span class="math inline">\(x\leqslant y\)</span>；由于首项 <span class="math inline">\(a\)</span> 为整数，且首项 <span class="math inline">\(a\)</span> 满足 <span class="math inline">\(2a=y-x+1&gt;0\)</span>，即 <span class="math inline">\(a=\frac{y-x+1}{2}\)</span>，即 <span class="math inline">\(y-x+1\)</span> 为偶数。</p>
+<p><strong>推范围：</strong>由于 <span class="math inline">\(x\leqslant y\)</span>，且 <span class="math inline">\(xy=2n\)</span>，得 <span class="math inline">\(x\leqslant {\frac{2n}{x}}\)</span>，即 <span class="math inline">\(x\leqslant \sqrt{2n}\)</span>。</p>
+<p><strong>输出要求：</strong>由于要先输出尽可能小的数，已知 <span class="math inline">\(a\)</span> 为首项，因此只要让 <span class="math inline">\(a\)</span> 由小往大遍历即可。由上面的等式可以得到 <span class="math inline">\(2a = \frac{2n}{k}-(k+1)\)</span>，可见 <span class="math inline">\(a\)</span> 会随 <span class="math inline">\(k\)</span> 的增加而减少 ，且由于 <span class="math inline">\(x=k\)</span>，因此只要让 <span class="math inline">\(x\)</span> 由大往小遍历即可。</p>
 <h2 id="三题解">三、题解</h2>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;algorithm&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stack&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;unordered_map&gt;</span>	<span class="hljs-comment">// 哈希表</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br>stack&lt;<span class="hljs-type">int</span>&gt; num;	<span class="hljs-comment">// 存数字</span><br>stack&lt;<span class="hljs-type">char</span>&gt; op;	<span class="hljs-comment">// 存运算符</span><br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">eval</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">auto</span> b = num.<span class="hljs-built_in">top</span>(); num.<span class="hljs-built_in">pop</span>();	<span class="hljs-comment">// 取出第二个数字</span><br>    <span class="hljs-keyword">auto</span> a = num.<span class="hljs-built_in">top</span>(); num.<span class="hljs-built_in">pop</span>();	<span class="hljs-comment">// 取出第一个数字</span><br>    <span class="hljs-keyword">auto</span> c = op.<span class="hljs-built_in">top</span>(); op.<span class="hljs-built_in">pop</span>();	<span class="hljs-comment">// 取出运算符</span><br>    <span class="hljs-type">int</span> x;<br>    <span class="hljs-comment">// 计算</span><br>    <span class="hljs-keyword">if</span> (c == <span class="hljs-string">&#x27;+&#x27;</span>) x = a + b;<br>    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (c == <span class="hljs-string">&#x27;-&#x27;</span>) x = a - b;<br>    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (c == <span class="hljs-string">&#x27;*&#x27;</span>) x = a * b;<br>    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (c == <span class="hljs-string">&#x27;/&#x27;</span>) x = a / b;<br>    num.<span class="hljs-built_in">push</span>(x);	<span class="hljs-comment">// 将计算结果存入栈中</span><br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    unordered_map&lt;<span class="hljs-type">char</span>, <span class="hljs-type">int</span>&gt; pr&#123;&#123;<span class="hljs-string">&#x27;+&#x27;</span>, <span class="hljs-number">1</span>&#125;, &#123;<span class="hljs-string">&#x27;-&#x27;</span>, <span class="hljs-number">1</span>&#125;, &#123;<span class="hljs-string">&#x27;*&#x27;</span>, <span class="hljs-number">2</span>&#125;, &#123;<span class="hljs-string">&#x27;/&#x27;</span>, <span class="hljs-number">2</span>&#125;&#125;;	<span class="hljs-comment">// 定义各个运算符的优先级, 数越大优先级越大</span><br>    string str;<br>    cin &gt;&gt; str;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; str.<span class="hljs-built_in">size</span>(); i++)<br>    &#123;<br>        <span class="hljs-keyword">auto</span> c = str[i];	<span class="hljs-comment">// 存取当前字符</span><br>        <span class="hljs-keyword">if</span> (<span class="hljs-built_in">isdigit</span>(c))		<span class="hljs-comment">// 如果当前字符是数字, 把当前的数字取出来</span><br>        &#123;<br>            <span class="hljs-type">int</span> x = <span class="hljs-number">0</span>, j = i;<br>            <span class="hljs-keyword">while</span> (j &lt; str.<span class="hljs-built_in">size</span>() &amp;&amp; <span class="hljs-built_in">isdigit</span>(str[j]))<br>                x = x * <span class="hljs-number">10</span> + str[j++] - <span class="hljs-string">&#x27;0&#x27;</span>;<br>            i = j - <span class="hljs-number">1</span>;		<span class="hljs-comment">// 变化指针i的位置</span><br>            num.<span class="hljs-built_in">push</span>(x);	<span class="hljs-comment">// 把数字放到栈里</span><br>        &#125;<br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (c == <span class="hljs-string">&#x27;(&#x27;</span>) op.<span class="hljs-built_in">push</span>(c);<br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (c == <span class="hljs-string">&#x27;)&#x27;</span>)<br>        &#123;<br>            <span class="hljs-keyword">while</span> (op.<span class="hljs-built_in">top</span>() != <span class="hljs-string">&#x27;(&#x27;</span>) <span class="hljs-built_in">eval</span>();		<span class="hljs-comment">// 把栈里面所有运算符从右往左操作一遍, 直到遇到 (</span><br>            op.<span class="hljs-built_in">pop</span>();	<span class="hljs-comment">// 弹出左括号</span><br>        &#125;<br>        <span class="hljs-keyword">else</span> <span class="hljs-comment">// 一般的运算符</span><br>        &#123;<br>            <span class="hljs-keyword">while</span> (op.<span class="hljs-built_in">size</span>() &amp;&amp; op.<span class="hljs-built_in">top</span>() != <span class="hljs-string">&#x27;(&#x27;</span> &amp;&amp; pr[op.<span class="hljs-built_in">top</span>()] &gt;= pr[c]) <span class="hljs-built_in">eval</span>();	<span class="hljs-comment">// 运算符栈不为空, 且栈顶元素优先级高于当前元素, 循环操作高优先级运算符</span><br>            op.<span class="hljs-built_in">push</span>(c);	<span class="hljs-comment">// 将当前运算符存入栈</span><br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">while</span> (op.<span class="hljs-built_in">size</span>()) <span class="hljs-built_in">eval</span>();	<span class="hljs-comment">// 从右往左操作一遍运算符</span><br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d&quot;</span>, num.<span class="hljs-built_in">top</span>());<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>不知道为什么二分的时间会更长</p>
+<p><img src="https://s1.ax1x.com/2023/07/17/pCI4oi6.png" srcset="/img/loading.gif" lazyload alt="image-20230716234258894" style="zoom:80%;"></p>
+<blockquote>
+<p><strong>ChatGPT是这样说的：</strong></p>
+<p>首先，我们来看一下它们的时间复杂度：</p>
+<ul>
+<li>二分方法的代码：在平均情况下，二分查找算法的时间复杂度为O(logn)。由于在每次迭代中，我们将搜索范围减半，因此该代码的时间复杂度可以近似为O(logn)。</li>
+<li>暴力枚举的代码：在该代码中，我们使用了一个循环来逐步增加序列的长度，直到找到满足条件的序列。因此，该代码的时间复杂度为O(n)。</li>
+</ul>
+<p>现在我们来解释为什么"二分方法的代码"的运行时间较长：</p>
+<ol type="1">
+<li>二分方法的代码中使用了二分查找来寻找满足条件的序列的起始和结束位置。这需要多次进行二分查找操作，每次查找都需要将搜索范围减半。虽然二分查找的时间复杂度较低，但它在一次迭代中进行了多次查找。</li>
+<li>每次二分查找中，我们还需要进行一些复杂的乘法和除法运算来计算中间位置的值。这些运算需要一定的时间。</li>
+<li>此外，二分方法的代码还包含了一些其他的操作，如条件判断和循环控制。这些操作也会增加代码的运行时间。</li>
+</ol>
+<p>因此，相对于暴力枚举的代码，二分方法的代码需要进行更多的操作和计算，导致其运行时间更长。在特定情况下，例如当输入的n较大时，二分方法的代码的差距会更加明显。</p>
+</blockquote>
+<h4 id="方法一暴力枚举-on2">方法一：暴力枚举 <span class="math inline">\(O(n^2)\)</span></h4>
+<p>没想到暴力也能过٩(๑&gt;◡&lt;๑)۶</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-type">int</span> n;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-type">bool</span> flag = <span class="hljs-literal">false</span>;<br>    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>, &amp;n);<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt; n; i++)<br>    &#123;<br>        <span class="hljs-type">int</span> sum = <span class="hljs-number">0</span>, j = i;<br>        <span class="hljs-keyword">while</span> (sum + j &lt; n) sum += j, j++;<br>        <span class="hljs-keyword">if</span> (sum + j == n) <br>        &#123;<br>            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> k = i; k &lt;= j; k++) <br>                <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d &quot;</span>, k); <br>            flag = <span class="hljs-literal">true</span>; <br>            <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\n&quot;</span>); <br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">if</span> (!flag) <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;NONE&quot;</span>);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h4 id="方法二二分">方法二：二分</h4>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-type">int</span> n;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-type">bool</span> flag = <span class="hljs-literal">false</span>;<br>    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>, &amp;n);<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> a = <span class="hljs-number">1</span>; a &lt;= n / <span class="hljs-number">2</span>; a++)<br>    &#123;<br>        <span class="hljs-type">int</span> l = a + <span class="hljs-number">1</span>, r = n / <span class="hljs-number">2</span> + <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">while</span> (l &lt; r) <br>        &#123;<br>            <span class="hljs-type">long</span> <span class="hljs-type">long</span> mid = l + r &gt;&gt; <span class="hljs-number">1</span>;		<span class="hljs-comment">// 在后续计算中使用乘法会导致超出int的范围, 因此选择使用long long类型</span><br>            <span class="hljs-keyword">if</span> ((a + mid) * (mid - a + <span class="hljs-number">1</span>) / <span class="hljs-number">2</span> &gt;= n) r = mid;<br>            <span class="hljs-keyword">else</span> l = mid + <span class="hljs-number">1</span>;<br>        &#125;<br>        <span class="hljs-keyword">if</span> ((a + l) * (l - a + <span class="hljs-number">1</span>) / <span class="hljs-number">2</span> == n) <br>        &#123;<br>            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> k = a; k &lt;= l; k++) <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d &quot;</span>, k); <br>            flag = <span class="hljs-literal">true</span>; <br>            <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\n&quot;</span>);<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">if</span> (!flag) <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;NONE&quot;</span>);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h4 id="方法三数学知识">方法三：数学知识</h4>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;cmath&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-type">int</span> n;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-type">bool</span> flag = <span class="hljs-literal">false</span>;<br>    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>, &amp;n);<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> x = <span class="hljs-built_in">sqrt</span>(<span class="hljs-number">2</span> * n); x &gt;= <span class="hljs-number">2</span>; x--)<br>        <span class="hljs-keyword">if</span> (<span class="hljs-number">2</span> * n % x == <span class="hljs-number">0</span>)<br>        &#123;<br>            <span class="hljs-type">int</span> y = <span class="hljs-number">2</span> * n / x;<br>            <span class="hljs-type">int</span> k = x;<br>            <span class="hljs-type">int</span> t = y - x + <span class="hljs-number">1</span>;<br>            <span class="hljs-keyword">if</span> (t % <span class="hljs-number">2</span> == <span class="hljs-number">0</span>)<br>            &#123;<br>                flag = <span class="hljs-literal">true</span>;<br>                <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>, j = t / <span class="hljs-number">2</span>; i &lt; k; i++, j++) <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d &quot;</span>, j);<br>                <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\n&quot;</span>);<br>            &#125;<br>        &#125;<br>    <span class="hljs-keyword">if</span> (!flag) <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;NONE&quot;</span>);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
 
                 
               </div>
@@ -377,9 +401,11 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E6%A0%88/" class="print-no-link">#栈</a>
+        <a href="/tags/%E4%BA%8C%E5%88%86/" class="print-no-link">#二分</a>
       
-        <a href="/tags/%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%B1%82%E5%80%BC/" class="print-no-link">#表达式求值</a>
+        <a href="/tags/%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86/" class="print-no-link">#数学知识</a>
+      
+        <a href="/tags/%E8%AF%95%E9%99%A4%E6%B3%95/" class="print-no-link">#试除法</a>
       
     </div>
   
@@ -391,8 +417,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>AcWing3302. 表达式求值</div>
-      <div>http://ihrd.github.io/2023/07/12/表达式求值/</div>
+      <div>AcWing3717. 整数序列</div>
+      <div>http://ihrd.github.io/2023/07/16/整数序列/</div>
     </div>
     <div class="license-meta">
       
@@ -404,7 +430,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年7月12日</div>
+          <div>2023年7月16日</div>
         </div>
       
       
@@ -436,18 +462,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/07/16/%E6%95%B4%E6%95%B0%E5%BA%8F%E5%88%97/" title="AcWing3717. 整数序列">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">AcWing3717. 整数序列</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/07/09/%E6%A0%88%E4%B8%8E%E9%98%9F%E5%88%97/" title="栈与队列">
-                        <span class="hidden-mobile">栈与队列</span>
+                      <a href="/2023/07/12/%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%B1%82%E5%80%BC/" title="AcWing3302. 表达式求值">
+                        <span class="hidden-mobile">AcWing3302. 表达式求值</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
