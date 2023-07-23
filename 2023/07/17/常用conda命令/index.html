@@ -16,26 +16,24 @@
   <meta name="author" content="Zehao Zhang">
   <meta name="keywords" content="">
   
-    <meta name="description" content="离散化  特指整数的离散化、保序的离散化  **序列特点：**值域较大（$0$ ~ $10^9$）、个数较少（可能只有$10^5$个数） 有些题目可能要以这些序列的值为下标来做，因此需要把序列映射到从 $0$ 开始的连续的自然数。  离散化中常见的两个问题：  a[]中可能有重复元素  -&gt; 去重 如何计算x离散化后的值 -&gt; 二分查找  模板 12345678910111213141">
+    <meta name="description" content="常用Conda命令 查看已经创建的虚拟环境：conda env list 创建conda虚拟环境：conda create -n your_env_name python&#x3D;x.x  激活conda虚拟环境：conda activate your_env_name 删除conda虚拟环境：conda remove -n your_env_name --all  查看当前conda环境中安装了哪些包：">
 <meta property="og:type" content="article">
-<meta property="og:title" content="离散化">
-<meta property="og:url" content="http://ihrd.github.io/2023/07/04/%E7%A6%BB%E6%95%A3%E5%8C%96/index.html">
+<meta property="og:title" content="常用conda命令">
+<meta property="og:url" content="http://ihrd.github.io/2023/07/17/%E5%B8%B8%E7%94%A8conda%E5%91%BD%E4%BB%A4/index.html">
 <meta property="og:site_name" content="IHRD">
-<meta property="og:description" content="离散化  特指整数的离散化、保序的离散化  **序列特点：**值域较大（$0$ ~ $10^9$）、个数较少（可能只有$10^5$个数） 有些题目可能要以这些序列的值为下标来做，因此需要把序列映射到从 $0$ 开始的连续的自然数。  离散化中常见的两个问题：  a[]中可能有重复元素  -&gt; 去重 如何计算x离散化后的值 -&gt; 二分查找  模板 12345678910111213141">
+<meta property="og:description" content="常用Conda命令 查看已经创建的虚拟环境：conda env list 创建conda虚拟环境：conda create -n your_env_name python&#x3D;x.x  激活conda虚拟环境：conda activate your_env_name 删除conda虚拟环境：conda remove -n your_env_name --all  查看当前conda环境中安装了哪些包：">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://s1.ax1x.com/2023/07/15/pC5QM4J.png">
-<meta property="article:published_time" content="2023-07-04T05:01:13.000Z">
-<meta property="article:modified_time" content="2023-07-15T03:07:36.897Z">
+<meta property="article:published_time" content="2023-07-17T03:27:23.000Z">
+<meta property="article:modified_time" content="2023-07-17T04:05:35.944Z">
 <meta property="article:author" content="Zehao Zhang">
-<meta property="article:tag" content="离散化">
+<meta property="article:tag" content="conda命令">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://s1.ax1x.com/2023/07/15/pC5QM4J.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>离散化 - IHRD</title>
+  <title>常用conda命令 - IHRD</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -232,7 +230,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="离散化"></span>
+            <span id="subtitle" data-typed-text="常用conda命令"></span>
           
         </div>
 
@@ -243,8 +241,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-07-04 13:01" pubdate>
-          2023年7月4日 下午
+        <time datetime="2023-07-17 11:27" pubdate>
+          2023年7月17日 上午
         </time>
       </span>
     
@@ -255,7 +253,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          499 字
+          264 字
         
       </span>
     
@@ -266,7 +264,7 @@
         
         
         
-          5 分钟
+          3 分钟
         
       </span>
     
@@ -303,25 +301,20 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">离散化</h1>
+            <h1 id="seo-header">常用conda命令</h1>
             
             
               <div class="markdown-body">
                 
-                <h1>离散化</h1>
-<blockquote>
-<p>特指整数的离散化、保序的离散化</p>
-</blockquote>
-<p>**序列特点：**值域较大（$0$ ~ $10^9$）、个数较少（可能只有$10^5$个数）</p>
-<p>有些题目可能要以这些序列的值为下标来做，因此需要把序列映射到从 $0$ 开始的连续的自然数。</p>
-<img src="https://s1.ax1x.com/2023/07/15/pC5QM4J.png" srcset="/img/loading.gif" lazyload style="zoom:80%;">
-<p><strong>离散化中常见的两个问题：</strong></p>
-<ol>
-<li><code>a[]</code>中可能有重复元素  -&gt; 去重</li>
-<li>如何计算<code>x</code>离散化后的值 -&gt; 二分查找</li>
-</ol>
-<h2 id="模板">模板</h2>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs c++">vector&lt;<span class="hljs-type">int</span>&gt; alls; <span class="hljs-comment">// 存储所有待离散化的值</span><br><span class="hljs-built_in">sort</span>(alls.<span class="hljs-built_in">begin</span>(), alls.<span class="hljs-built_in">end</span>()); <span class="hljs-comment">// 将所有值排序</span><br>alls.<span class="hljs-built_in">erase</span>(<span class="hljs-built_in">unique</span>(alls.<span class="hljs-built_in">begin</span>(), alls.<span class="hljs-built_in">end</span>()), alls.<span class="hljs-built_in">end</span>());   <span class="hljs-comment">// 去掉重复元素</span><br><br><span class="hljs-comment">// 二分求出x对应的离散化的值</span><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">find</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span> <span class="hljs-comment">// 找到第一个大于等于x的位置</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-type">int</span> l = <span class="hljs-number">0</span>, r = alls.<span class="hljs-built_in">size</span>() - <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">while</span> (l &lt; r)<br>    &#123;<br>        <span class="hljs-type">int</span> mid = l + r &gt;&gt; <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">if</span> (alls[mid] &gt;= x) r = mid;<br>        <span class="hljs-keyword">else</span> l = mid + <span class="hljs-number">1</span>;<br>    &#125;<br>    <span class="hljs-keyword">return</span> r + <span class="hljs-number">1</span>; <span class="hljs-comment">// 映射到1, 2, ...n</span><br>&#125;<br></code></pre></td></tr></table></figure>
+                <h1>常用Conda命令</h1>
+<p><strong>查看已经创建的虚拟环境：</strong><code>conda env list</code></p>
+<p><strong>创建conda虚拟环境：</strong><code>conda create -n your_env_name python=x.x </code></p>
+<p><strong>激活conda虚拟环境：</strong><code>conda activate your_env_name</code></p>
+<p><strong>删除conda虚拟环境：</strong><code>conda remove -n your_env_name --all</code></p>
+<hr>
+<p><strong>查看当前conda环境中安装了哪些包：</strong><code>conda list</code></p>
+<p><strong>在虚拟环境中安装包：</strong><code>conda install -n your_env_name [package]</code></p>
+<p><strong>检查更新当前conda：</strong><code>conda update conda</code></p>
 
                 
               </div>
@@ -340,7 +333,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/Algorithm/" class="category-chain-item">Algorithm</a>
+  <a href="/categories/Conda/" class="category-chain-item">Conda</a>
   
   
 
@@ -355,7 +348,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E7%A6%BB%E6%95%A3%E5%8C%96/" class="print-no-link">#离散化</a>
+        <a href="/tags/conda%E5%91%BD%E4%BB%A4/" class="print-no-link">#conda命令</a>
       
     </div>
   
@@ -367,8 +360,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>离散化</div>
-      <div>http://ihrd.github.io/2023/07/04/离散化/</div>
+      <div>常用conda命令</div>
+      <div>http://ihrd.github.io/2023/07/17/常用conda命令/</div>
     </div>
     <div class="license-meta">
       
@@ -380,7 +373,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年7月4日</div>
+          <div>2023年7月17日</div>
         </div>
       
       
@@ -412,9 +405,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/07/04/%E5%8C%BA%E9%97%B4%E5%90%88%E5%B9%B6/" title="区间合并">
+                      <a href="/2023/07/22/%E6%9C%80%E5%A4%A7%E5%BC%82%E6%88%96%E5%AF%B9/" title="AcWing143. 最大异或对">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">区间合并</span>
+                        <span class="hidden-mobile">AcWing143. 最大异或对</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -422,8 +415,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/07/04/%E4%BD%8D%E8%BF%90%E7%AE%97/" title="位运算">
-                        <span class="hidden-mobile">位运算</span>
+                      <a href="/2023/07/16/%E6%95%B4%E6%95%B0%E5%BA%8F%E5%88%97/" title="AcWing3717. 整数序列">
+                        <span class="hidden-mobile">AcWing3717. 整数序列</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
