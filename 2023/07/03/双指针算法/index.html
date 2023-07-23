@@ -16,12 +16,12 @@
   <meta name="author" content="Zehao Zhang">
   <meta name="keywords" content="">
   
-    <meta name="description" content="双指针算法   第一类：指向的是两个序列，例如：归并排序中的双指针   第二类：指向的是一个序列（常见），例如：快速排序的双指针   1. 核心思想 将下面的朴素算法的时间复杂度优化到 $O(n)$ 123for (int i &#x3D; 0; i &lt; n; i++)    for (int j &#x3D; 0; j &lt; n; j++)        &#x2F;&#x2F; 操作  为什么双指针算法的时间复杂度是 $O">
+    <meta name="description" content="双指针算法  第一类：指向的是两个序列，例如：归并排序中的双指针 第二类：指向的是一个序列（常见），例如：快速排序的双指针  1. 核心思想 将下面的朴素算法的时间复杂度优化到 \(O(n)\) 123for (int i &#x3D; 0; i &lt; n; i++)    for (int j &#x3D; 0; j &lt; n; j++)        &#x2F;&#x2F; 操作  为什么双指针算法的时间">
 <meta property="og:type" content="article">
 <meta property="og:title" content="双指针算法">
 <meta property="og:url" content="http://ihrd.github.io/2023/07/03/%E5%8F%8C%E6%8C%87%E9%92%88%E7%AE%97%E6%B3%95/index.html">
 <meta property="og:site_name" content="IHRD">
-<meta property="og:description" content="双指针算法   第一类：指向的是两个序列，例如：归并排序中的双指针   第二类：指向的是一个序列（常见），例如：快速排序的双指针   1. 核心思想 将下面的朴素算法的时间复杂度优化到 $O(n)$ 123for (int i &#x3D; 0; i &lt; n; i++)    for (int j &#x3D; 0; j &lt; n; j++)        &#x2F;&#x2F; 操作  为什么双指针算法的时间复杂度是 $O">
+<meta property="og:description" content="双指针算法  第一类：指向的是两个序列，例如：归并排序中的双指针 第二类：指向的是一个序列（常见），例如：快速排序的双指针  1. 核心思想 将下面的朴素算法的时间复杂度优化到 \(O(n)\) 123for (int i &#x3D; 0; i &lt; n; i++)    for (int j &#x3D; 0; j &lt; n; j++)        &#x2F;&#x2F; 操作  为什么双指针算法的时间">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://s1.ax1x.com/2023/07/15/pC5M5nK.png">
 <meta property="article:published_time" content="2023-07-03T04:51:21.000Z">
@@ -308,38 +308,34 @@
             
               <div class="markdown-body">
                 
-                <h1>双指针算法</h1>
+                <h1 id="双指针算法">双指针算法</h1>
 <ul>
-<li>
-<p><strong>第一类：<strong>指向的是</strong>两个序列</strong>，例如：归并排序中的双指针</p>
-</li>
-<li>
-<p><strong>第二类：<strong>指向的是</strong>一个序列</strong>（常见），例如：快速排序的双指针</p>
-</li>
+<li><p><strong>第一类：</strong>指向的是<strong>两个序列</strong>，例如：归并排序中的双指针</p></li>
+<li><p><strong>第二类：</strong>指向的是<strong>一个序列</strong>（常见），例如：快速排序的双指针</p></li>
 </ul>
-<h2 id="1-核心思想">1. 核心思想</h2>
-<p>将下面的朴素算法的时间复杂度优化到 $O(n)$</p>
+<h2 id="核心思想">1. 核心思想</h2>
+<p>将下面的朴素算法的时间复杂度优化到 <span class="math inline">\(O(n)\)</span></p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++)<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j = <span class="hljs-number">0</span>; j &lt; n; j++)<br>        <span class="hljs-comment">// 操作</span><br></code></pre></td></tr></table></figure>
 <blockquote>
-<p><strong>为什么双指针算法的时间复杂度是 $O(n)$ ?</strong></p>
-<p>双指针算法的时间复杂度为 $O(n)$ 的原因是，它通常在一个循环中使用两个指针进行迭代，而这两个指针相对于输入规模 $n$ 的数量级是线性的。</p>
+<p><strong>为什么双指针算法的时间复杂度是 <span class="math inline">\(O(n)\)</span> ?</strong></p>
+<p>双指针算法的时间复杂度为 <span class="math inline">\(O(n)\)</span> 的原因是，它通常在一个循环中使用两个指针进行迭代，而这两个指针相对于输入规模 <span class="math inline">\(n\)</span> 的数量级是线性的。</p>
 <p>在双指针算法中，指针通常从输入序列的两端开始，然后向中间移动，根据特定的条件调整指针的位置。算法的终止条件可能是两个指针相遇或到达特定位置。</p>
-<p>由于每次迭代中，指针的移动都是以固定的步长进行的，而且指针从两个方向同时移动，因此整个算法的执行时间与输入规模 $n$ 成线性关系。换句话说，算法的运行时间随着输入规模的增加而线性增长。</p>
-<p>需要注意的是，虽然双指针算法的时间复杂度通常是 $O(n)$，但也可以有特殊情况下的变体，其时间复杂度可能是 $O(n^2)$ 或其他不同的复杂度。这取决于算法的具体实现和问题的特定要求。但是，一般而言，双指针算法的时间复杂度是线性的，即 $O(n)$。</p>
+<p>由于每次迭代中，指针的移动都是以固定的步长进行的，而且指针从两个方向同时移动，因此整个算法的执行时间与输入规模 <span class="math inline">\(n\)</span> 成线性关系。换句话说，算法的运行时间随着输入规模的增加而线性增长。</p>
+<p>需要注意的是，虽然双指针算法的时间复杂度通常是 <span class="math inline">\(O(n)\)</span>，但也可以有特殊情况下的变体，其时间复杂度可能是 <span class="math inline">\(O(n^2)\)</span> 或其他不同的复杂度。这取决于算法的具体实现和问题的特定要求。但是，一般而言，双指针算法的时间复杂度是线性的，即 <span class="math inline">\(O(n)\)</span>。</p>
 </blockquote>
-<h2 id="2-例子">2. 例子</h2>
+<h2 id="例子">2. 例子</h2>
 <p><strong>题目要求：</strong></p>
 <p>输入一个字符串，其中包含多个单词，每个单词用空格隔开，输出每个单词。（假定字符串开始时没有空格，且每个单词之间只有一个空格）</p>
 <p><strong>分析：</strong></p>
-<img src="https://s1.ax1x.com/2023/07/15/pC5M5nK.png" srcset="/img/loading.gif" lazyload style="zoom:80%;">
+<p><img src="https://s1.ax1x.com/2023/07/15/pC5M5nK.png" srcset="/img/loading.gif" lazyload style="zoom:80%;"></p>
 <p><strong>代码：</strong></p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;string.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-type">char</span> str[<span class="hljs-number">1000</span>];<br>    <span class="hljs-built_in">gets</span>(str);<br>    <span class="hljs-type">int</span> n = <span class="hljs-built_in">strlen</span>(str);<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++)<br>    &#123;<br>        <span class="hljs-type">int</span> j = i;<br>        <span class="hljs-keyword">while</span> (j &lt; n &amp;&amp; str[j] != <span class="hljs-string">&#x27; &#x27;</span>) j++;<br>        <span class="hljs-comment">// 这道题的具体逻辑</span><br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> k = i; k &lt; j; k++) cout &lt;&lt; str[k];<br>        cout &lt;&lt; endl;<br>        i = j;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-<h2 id="3-模板">3. 模板</h2>
+<h2 id="模板">3. 模板</h2>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>, j = <span class="hljs-number">0</span>; i &lt; n; i++ )<br>&#123;<br>    <span class="hljs-keyword">while</span> (j &lt; i &amp;&amp; <span class="hljs-built_in">check</span>(i, j)) j++ ;<br>    <span class="hljs-comment">// 具体问题的逻辑</span><br>&#125;<br><span class="hljs-comment">// 常见问题分类：</span><br>    <span class="hljs-comment">// (1) 对于一个序列，用两个指针维护一段区间</span><br>    <span class="hljs-comment">// (2) 对于两个序列，维护某种次序，比如归并排序中合并两个有序序列的操作</span><br></code></pre></td></tr></table></figure>
 <p><strong>总结（双指针算法的实现思路）</strong></p>
-<ol>
-<li>写出题目对应的暴力解法（时间复杂度为 $O(n^2)$），寻找两个循环索引 $i、j$ 之间的单调关系</li>
-<li>如果有单调关系的话，利用其单调关系，把状态数量由 $n^2$ 变成 $n$，从而把时间复杂度由 $O(n^2)$ 变成 $O(n)$</li>
+<ol type="1">
+<li>写出题目对应的暴力解法（时间复杂度为 <span class="math inline">\(O(n^2)\)</span>），寻找两个循环索引 <span class="math inline">\(i、j\)</span> 之间的单调关系</li>
+<li>如果有单调关系的话，利用其单调关系，把状态数量由 <span class="math inline">\(n^2\)</span> 变成 <span class="math inline">\(n\)</span>，从而把时间复杂度由 <span class="math inline">\(O(n^2)\)</span> 变成 <span class="math inline">\(O(n)\)</span></li>
 </ol>
 
                 

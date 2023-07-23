@@ -16,12 +16,12 @@
   <meta name="author" content="Zehao Zhang">
   <meta name="keywords" content="">
   
-    <meta name="description" content="离散化  特指整数的离散化、保序的离散化  **序列特点：**值域较大（$0$ ~ $10^9$）、个数较少（可能只有$10^5$个数） 有些题目可能要以这些序列的值为下标来做，因此需要把序列映射到从 $0$ 开始的连续的自然数。  离散化中常见的两个问题：  a[]中可能有重复元素  -&gt; 去重 如何计算x离散化后的值 -&gt; 二分查找  模板 12345678910111213141">
+    <meta name="description" content="离散化  特指整数的离散化、保序的离散化  序列特点：值域较大（\(0\) ~ \(10^9\)）、个数较少（可能只有\(10^5\)个数） 有些题目可能要以这些序列的值为下标来做，因此需要把序列映射到从 \(0\) 开始的连续的自然数。  离散化中常见的两个问题：  a[]中可能有重复元素 -&gt; 去重 如何计算x离散化后的值 -&gt; 二分查找  模板 1234">
 <meta property="og:type" content="article">
 <meta property="og:title" content="离散化">
 <meta property="og:url" content="http://ihrd.github.io/2023/07/04/%E7%A6%BB%E6%95%A3%E5%8C%96/index.html">
 <meta property="og:site_name" content="IHRD">
-<meta property="og:description" content="离散化  特指整数的离散化、保序的离散化  **序列特点：**值域较大（$0$ ~ $10^9$）、个数较少（可能只有$10^5$个数） 有些题目可能要以这些序列的值为下标来做，因此需要把序列映射到从 $0$ 开始的连续的自然数。  离散化中常见的两个问题：  a[]中可能有重复元素  -&gt; 去重 如何计算x离散化后的值 -&gt; 二分查找  模板 12345678910111213141">
+<meta property="og:description" content="离散化  特指整数的离散化、保序的离散化  序列特点：值域较大（\(0\) ~ \(10^9\)）、个数较少（可能只有\(10^5\)个数） 有些题目可能要以这些序列的值为下标来做，因此需要把序列映射到从 \(0\) 开始的连续的自然数。  离散化中常见的两个问题：  a[]中可能有重复元素 -&gt; 去重 如何计算x离散化后的值 -&gt; 二分查找  模板 1234">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://s1.ax1x.com/2023/07/15/pC5QM4J.png">
 <meta property="article:published_time" content="2023-07-04T05:01:13.000Z">
@@ -255,7 +255,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          499 字
+          503 字
         
       </span>
     
@@ -308,16 +308,16 @@
             
               <div class="markdown-body">
                 
-                <h1>离散化</h1>
+                <h1 id="离散化">离散化</h1>
 <blockquote>
 <p>特指整数的离散化、保序的离散化</p>
 </blockquote>
-<p>**序列特点：**值域较大（$0$ ~ $10^9$）、个数较少（可能只有$10^5$个数）</p>
-<p>有些题目可能要以这些序列的值为下标来做，因此需要把序列映射到从 $0$ 开始的连续的自然数。</p>
-<img src="https://s1.ax1x.com/2023/07/15/pC5QM4J.png" srcset="/img/loading.gif" lazyload style="zoom:80%;">
+<p><strong>序列特点：</strong>值域较大（<span class="math inline">\(0\)</span> ~ <span class="math inline">\(10^9\)</span>）、个数较少（可能只有<span class="math inline">\(10^5\)</span>个数）</p>
+<p>有些题目可能要以这些序列的值为下标来做，因此需要把序列映射到从 <span class="math inline">\(0\)</span> 开始的连续的自然数。</p>
+<p><img src="https://s1.ax1x.com/2023/07/15/pC5QM4J.png" srcset="/img/loading.gif" lazyload style="zoom:80%;"></p>
 <p><strong>离散化中常见的两个问题：</strong></p>
-<ol>
-<li><code>a[]</code>中可能有重复元素  -&gt; 去重</li>
+<ol type="1">
+<li><code>a[]</code>中可能有重复元素 -&gt; 去重</li>
 <li>如何计算<code>x</code>离散化后的值 -&gt; 二分查找</li>
 </ol>
 <h2 id="模板">模板</h2>
