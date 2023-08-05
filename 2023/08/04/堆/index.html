@@ -16,26 +16,26 @@
   <meta name="author" content="Zehao Zhang">
   <meta name="keywords" content="">
   
-    <meta name="description" content="AcWing240. 食物链  原题链接：240. 食物链 - AcWing题库  一、题目 动物王国中有三类动物 \(A\), \(B\), \(C\)，这三类动物的食物链构成了有趣的环形。 \(A\) 吃 \(B\)，\(B\) 吃 \(C\)，\(C\) 吃 \(A\)。 现有 \(N\) 个动物，以 \(1∼N\) 编号。 每个动物都是 \(A,B,C\) 中的一种，但是我">
+    <meta name="description" content="堆 一、实现的堆要支持的操作  向集合中插入一个数 求集合当中的最小值 删除最小值 删除任意一个元素 修改任意一个元素   在手写堆实现的操作中，前三个操作STL中的堆也可以直接实现，但是后两种操作无法直接实现。  二、堆的基本结构及存储 手动实现堆中，堆的数据结构是一个完全二叉树。  小根堆：任意节点的值都小于或等于它的子节点的值，这保证了根节点的值最小。 大根堆">
 <meta property="og:type" content="article">
-<meta property="og:title" content="AcWing240. 食物链">
-<meta property="og:url" content="http://ihrd.github.io/2023/07/25/%E9%A3%9F%E7%89%A9%E9%93%BE/index.html">
+<meta property="og:title" content="堆">
+<meta property="og:url" content="http://ihrd.github.io/2023/08/04/%E5%A0%86/index.html">
 <meta property="og:site_name" content="IHRD">
-<meta property="og:description" content="AcWing240. 食物链  原题链接：240. 食物链 - AcWing题库  一、题目 动物王国中有三类动物 \(A\), \(B\), \(C\)，这三类动物的食物链构成了有趣的环形。 \(A\) 吃 \(B\)，\(B\) 吃 \(C\)，\(C\) 吃 \(A\)。 现有 \(N\) 个动物，以 \(1∼N\) 编号。 每个动物都是 \(A,B,C\) 中的一种，但是我">
+<meta property="og:description" content="堆 一、实现的堆要支持的操作  向集合中插入一个数 求集合当中的最小值 删除最小值 删除任意一个元素 修改任意一个元素   在手写堆实现的操作中，前三个操作STL中的堆也可以直接实现，但是后两种操作无法直接实现。  二、堆的基本结构及存储 手动实现堆中，堆的数据结构是一个完全二叉树。  小根堆：任意节点的值都小于或等于它的子节点的值，这保证了根节点的值最小。 大根堆">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://s1.ax1x.com/2023/07/25/pCXarvj.png">
-<meta property="article:published_time" content="2023-07-25T07:55:14.000Z">
-<meta property="article:modified_time" content="2023-07-25T09:33:42.830Z">
+<meta property="og:image" content="https://s1.ax1x.com/2023/08/05/pPAewbn.png">
+<meta property="article:published_time" content="2023-08-04T08:03:26.000Z">
+<meta property="article:modified_time" content="2023-08-05T14:53:46.135Z">
 <meta property="article:author" content="Zehao Zhang">
-<meta property="article:tag" content="并查集">
+<meta property="article:tag" content="堆">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://s1.ax1x.com/2023/07/25/pCXarvj.png">
+<meta name="twitter:image" content="https://s1.ax1x.com/2023/08/05/pPAewbn.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>AcWing240. 食物链 - IHRD</title>
+  <title>堆 - IHRD</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -232,7 +232,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="AcWing240. 食物链"></span>
+            <span id="subtitle" data-typed-text="堆"></span>
           
         </div>
 
@@ -243,8 +243,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-07-25 15:55" pubdate>
-          2023年7月25日 下午
+        <time datetime="2023-08-04 16:03" pubdate>
+          2023年8月4日 下午
         </time>
       </span>
     
@@ -255,7 +255,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.6k 字
+          3.1k 字
         
       </span>
     
@@ -266,7 +266,7 @@
         
         
         
-          22 分钟
+          26 分钟
         
       </span>
     
@@ -303,60 +303,91 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">AcWing240. 食物链</h1>
+            <h1 id="seo-header">堆</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="acwing240.-食物链">AcWing240. 食物链</h1>
-<blockquote>
-<p>原题链接：<a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/description/242/">240. 食物链 - AcWing题库</a></p>
-</blockquote>
-<h2 id="一题目">一、题目</h2>
-<p>动物王国中有三类动物 <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span>, <span class="math inline">\(C\)</span>，这三类动物的食物链构成了有趣的环形。</p>
-<p><span class="math inline">\(A\)</span> 吃 <span class="math inline">\(B\)</span>，<span class="math inline">\(B\)</span> 吃 <span class="math inline">\(C\)</span>，<span class="math inline">\(C\)</span> 吃 <span class="math inline">\(A\)</span>。</p>
-<p>现有 <span class="math inline">\(N\)</span> 个动物，以 <span class="math inline">\(1∼N\)</span> 编号。</p>
-<p>每个动物都是 <span class="math inline">\(A,B,C\)</span> 中的一种，但是我们并不知道它到底是哪一种。</p>
-<p>有人用两种说法对这 <span class="math inline">\(N\)</span> 个动物所构成的食物链关系进行描述：</p>
-<p>第一种说法是 <code>1 X Y</code>，表示 <span class="math inline">\(X\)</span> 和 <span class="math inline">\(Y\)</span> 是同类。</p>
-<p>第二种说法是 <code>2 X Y</code>，表示 <span class="math inline">\(X\)</span> 吃 <span class="math inline">\(Y\)</span>。</p>
-<p>此人对 <span class="math inline">\(N\)</span> 个动物，用上述两种说法，一句接一句地说出 <span class="math inline">\(K\)</span> 句话，这 <span class="math inline">\(K\)</span> 句话有的是真的，有的是假的。</p>
-<p>当一句话满足下列三条之一时，这句话就是假话，否则就是真话。</p>
+                <h1 id="堆">堆</h1>
+<h2 id="一实现的堆要支持的操作">一、实现的堆要支持的操作</h2>
 <ol type="1">
-<li>当前的话与前面的某些真的话冲突，就是假话；</li>
-<li>当前的话中 <span class="math inline">\(X\)</span> 或 <span class="math inline">\(Y\)</span> 比 <span class="math inline">\(N\)</span> 大，就是假话；</li>
-<li>当前的话表示 <span class="math inline">\(X\)</span> 吃 <span class="math inline">\(X\)</span>，就是假话。</li>
+<li>向集合中插入一个数</li>
+<li>求集合当中的最小值</li>
+<li>删除最小值</li>
+<li>删除任意一个元素</li>
+<li>修改任意一个元素</li>
 </ol>
-<p>你的任务是根据给定的 <span class="math inline">\(N\)</span> 和 <span class="math inline">\(K\)</span> 句话，输出假话的总数。</p>
-<h4 id="输入格式">输入格式</h4>
-<p>第一行是两个整数 <span class="math inline">\(N\)</span> 和 <span class="math inline">\(K\)</span>，以一个空格分隔。</p>
-<p>以下 <span class="math inline">\(K\)</span> 行每行是三个正整数 <span class="math inline">\(D\)</span>，<span class="math inline">\(X\)</span>，<span class="math inline">\(Y\)</span>，两数之间用一个空格隔开，其中 <span class="math inline">\(D\)</span> 表示说法的种类。</p>
-<p>若 <span class="math inline">\(D=1\)</span>，则表示 <span class="math inline">\(X\)</span> 和 <span class="math inline">\(Y\)</span> 是同类。</p>
-<p>若 <span class="math inline">\(D=2\)</span>，则表示 <span class="math inline">\(X\)</span> 吃 <span class="math inline">\(Y\)</span>。</p>
-<h4 id="输出格式">输出格式</h4>
-<p>只有一个整数，表示假话的数目。</p>
-<h4 id="数据范围">数据范围</h4>
-<p><span class="math inline">\(1≤N≤50000\)</span> <span class="math inline">\(0≤K≤100000\)</span></p>
-<h4 id="输入样例">输入样例：</h4>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs input">100 7<br>1 101 1 <br>2 1 2<br>2 2 3 <br>2 3 3 <br>1 1 3 <br>2 3 1 <br>1 5 5<br></code></pre></td></tr></table></figure>
-<h4 id="输出样例">输出样例：</h4>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs output">3<br></code></pre></td></tr></table></figure>
-<h2 id="二分析">二、分析</h2>
-<p>由题意知，<span class="math inline">\(A\)</span>、<span class="math inline">\(B\)</span>、<span class="math inline">\(C\)</span> 三类动物之间的关系为：</p>
-<p><img src="https://s1.ax1x.com/2023/07/25/pCXarvj.png" srcset="/img/loading.gif" lazyload style="zoom:67%;"></p>
-<p>假设节点<code>x</code>与根节点之间的距离为<code>d[x]</code>。若两个节点与根节点之间的距离模三相同，即<code>(d[x] - d[y]) % 3 == 0</code>，则表示两个节点是同类；若两个节点与根节点之间的距离模三差为 <span class="math inline">\(1\)</span>，即<code>(d[x] - d[y] - 1) % 3 == 0</code>，则表示两个节点是吃与被吃的关系，<code>x</code>节点吃<code>y</code>节点。</p>
 <blockquote>
-<p><strong>为什么不能直接比较两个节点与根节点之间的差值？</strong>、</p>
-<p>因为距离是正值，差值可能为负值。当使用两个节点与根节点之间的差值计算时：</p>
-<ul>
-<li>比较两个节点是否为同类，差值比较<code>d[x] % 3 == d[y] % 3</code>。此时，如果<code>d[x] % 3</code>为负值、<code>d[y] % 3</code>为正值（假设前者为 <span class="math inline">\(d[x] = -4\)</span>、后者为 <span class="math inline">\(d[y] = 2\)</span>），易知<code>d[x]</code>和<code>d[y]</code>是同类，但是通过差值判断的结论却恰恰相反。通过作差或转为符号相同的即可判断，即<code>d[x] - d[y] % 3 == 0</code>或<code>(d[x] % 3 + 3) % 3 == (d[y] % 3 + 3) % 3</code>。</li>
-<li>比较两个节点是否存在吃与被吃的关系同理。</li>
-</ul>
+<p>在手写堆实现的操作中，前三个操作STL中的堆也可以直接实现，但是后两种操作无法直接实现。</p>
 </blockquote>
-<p>在并查集中，将所有动物（节点）都存储在一个集合中，通过其与根节点之间的距离表示动物的类别，通过不同类别的动物在集合中与根节点的距离不同可以表示动物之间的吃与被吃的关系。</p>
-<p>如上图中，不同类别的动物在集合中与根节点的距离模三的结果不同，结果 <span class="math inline">\(0,1,2\)</span> 分别表示 <span class="math inline">\(A,B,C\)</span> 三种不同的动物。其中，<span class="math inline">\(0\)</span> 吃 <span class="math inline">\(2\)</span>、<span class="math inline">\(1\)</span> 吃 <span class="math inline">\(0\)</span>、<span class="math inline">\(2\)</span> 吃 <span class="math inline">\(1\)</span>。</p>
-<h2 id="三题解">三、题解</h2>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> N = <span class="hljs-number">50010</span>;<br><span class="hljs-comment">// p[]表示当前结点的父节点, d[]表示与根节点之间的距离</span><br><span class="hljs-comment">// 与根节点距离模三为0 -&gt; 被与根节点距离模三为1的吃</span><br><span class="hljs-comment">// 与根节点距离模三为1 -&gt; 被与根节点距离模三为2的吃</span><br><span class="hljs-comment">// 与根节点距离模三为2 -&gt; 被与根节点距离模三为0的吃</span><br><span class="hljs-type">int</span> n, k, p[N], d[N], ans;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">find</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">if</span> (p[x] != x)<br>    &#123;<br>        <span class="hljs-type">int</span> tmp = <span class="hljs-built_in">find</span>(p[x]);<br>        d[x] += d[p[x]];<br>        p[x] = tmp;<br>    &#125;<br>    <span class="hljs-keyword">return</span> p[x];<br>&#125;<br><br><span class="hljs-comment">// 检查是否为假话</span><br><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">check</span><span class="hljs-params">(<span class="hljs-type">int</span> op, <span class="hljs-type">int</span> x, <span class="hljs-type">int</span> y)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">if</span> (x &gt; n || y &gt; n) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;   <span class="hljs-comment">// 动物编号越界假话</span><br>    <span class="hljs-type">int</span> px = <span class="hljs-built_in">find</span>(x), py = <span class="hljs-built_in">find</span>(y);<br>    <span class="hljs-keyword">if</span> (op == <span class="hljs-number">1</span>)    <span class="hljs-comment">// x 和 y 是同一类</span><br>    &#123;<br>        <span class="hljs-keyword">if</span> (px == py &amp;&amp; (d[x] - d[y]) % <span class="hljs-number">3</span> != <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;   <span class="hljs-comment">// x和y在一个集合中  不满足x和y是同一类的条件</span><br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (px != py) <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;     <span class="hljs-comment">// x 和 y 不在同一个集合中</span><br>    &#125;<br>    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (op == <span class="hljs-number">2</span>)   <span class="hljs-comment">// x 吃 y</span><br>    &#123;<br>        <span class="hljs-keyword">if</span> (px == py &amp;&amp; (d[x] - d[y] - <span class="hljs-number">1</span>) % <span class="hljs-number">3</span> != <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;   <span class="hljs-comment">// x 和 y 在一个集合中  x 不满足吃 y 的距离条件</span><br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (px != py) <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;     <span class="hljs-comment">// x 和 y 不在同一个集合中</span><br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;    <span class="hljs-comment">// 重复出现相同条件</span><br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d%d&quot;</span>, &amp;n, &amp;k);<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i ++ ) p[i] = i;<br>    <span class="hljs-keyword">while</span> (k -- )<br>    &#123;<br>        <span class="hljs-type">int</span> op, x, y;<br>        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d%d%d&quot;</span>, &amp;op, &amp;x, &amp;y);<br>        <span class="hljs-type">int</span> px = <span class="hljs-built_in">find</span>(x), py = <span class="hljs-built_in">find</span>(y);<br>        <span class="hljs-keyword">if</span> (!<span class="hljs-built_in">check</span>(op, x, y)) &#123; ans++; <span class="hljs-keyword">continue</span>; &#125;  <span class="hljs-comment">// 假话</span><br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (px != py)  <span class="hljs-comment">// x 和 y 不在同一个集合中, 更新 x 和 y 所在的集合</span><br>        &#123;<br>            <span class="hljs-keyword">if</span> (op == <span class="hljs-number">1</span>)<br>            &#123;<br>                p[px] = py;     <span class="hljs-comment">// 设置x所在集合的根节点</span><br>                d[px] = d[y] - d[x];    <span class="hljs-comment">// 设置x到新的根节点的距离, 使x和y为同一类</span><br>            &#125;<br>            <span class="hljs-keyword">else</span><br>            &#123;<br>                p[px] = py;     <span class="hljs-comment">// 设置x所在集合的根节点</span><br>                d[px] = d[y] - d[x] + <span class="hljs-number">1</span>;    <span class="hljs-comment">// 设置x到新的根节点的距离, 使x能够吃y</span><br>            &#125;<br>        &#125;<br>    &#125;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>, ans);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="二堆的基本结构及存储">二、堆的基本结构及存储</h2>
+<p>手动实现堆中，堆的数据结构是一个完全二叉树。</p>
+<blockquote>
+<p><strong>小根堆：</strong>任意节点的值都小于或等于它的子节点的值，这保证了根节点的值最小。</p>
+<p><strong>大根堆：</strong>任意节点的值都大于或等于它的子节点的值，这保证了根节点的值最大。</p>
+</blockquote>
+<p>堆的存储：</p>
+<p>使用一个一维数组来存储（常用此方法存储完全二叉树）。其中，1号点是根节点，<code>x</code>的左儿子是<code>2x</code>，<code>x</code>的右儿子是<code>2x+1</code>。</p>
+<p><img src="https://s1.ax1x.com/2023/08/05/pPAee3D.png" srcset="/img/loading.gif" lazyload style="zoom:80%;"></p>
+<p><strong>如何建立一个堆？</strong></p>
+<ol type="1">
+<li><p>通过插入的方式建堆。这种方法时间复杂度较高，为 <span class="math inline">\(O(nlog_{2}n)\)</span>。</p></li>
+<li><p>通过下面的代码建堆，其时间复杂度为 <span class="math inline">\(O(n)\)</span>：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++) <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>, &amp;h[i]);<br><span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = n / <span class="hljs-number">2</span>; i; i--) <span class="hljs-built_in">down</span>(i);<br></code></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>为什么这种方法的时间复杂度为 <span class="math inline">\(O(n)\)</span> ?</strong></p>
+<p><img src="https://s1.ax1x.com/2023/08/05/pPAeKud.png" srcset="/img/loading.gif" lazyload style="zoom:80%;"></p>
+<p>由上图可得，执行<code>down()</code>操作的次数为： <span class="math display">\[
+S={\frac{n}{4}\times 1+\frac{n}{8}\times 2+\frac{n}{16}\times 3+\frac{n}{32}\times 4+···}
+\\
+=n \sum_{i=1}^{\infty} {\frac{i}{2^{i+1}}}
+\]</span></p>
+<p><span class="math display">\[
+s={\frac{1}{2^2}+\frac{2}{2^3}+\frac{3}{2^4}+\frac{4}{2^5}+···}
+\]</span></p>
+<p><span class="math display">\[
+2s={\frac{1}{2}}+{\frac{2}{2^2}}+{\frac{3}{2^3}}+{\frac{4}{2^4}}+···
+\]</span></p>
+<p><span class="math display">\[
+s=2s-s={\frac{1}{2}}+{\frac{1}{2^2}}+{\frac{1}{2^3}}+{\frac{1}{2^4}}+···
+\\
+=1-\left({\frac{1}{2}} \right) ^n&lt;1
+\]</span></p>
+<p>易知，该表达式和等差数列与等比数列乘积的前 <span class="math inline">\(n\)</span> 项和有关，且 <span class="math inline">\(s&lt;1\)</span>，故 <span class="math inline">\(S&lt;n\)</span>。</p>
+<p>所以，通过此方法建堆时，时间复杂度最坏为 <span class="math inline">\(O(n)\)</span>。</p>
+</blockquote></li>
+</ol>
+<h2 id="三两个基本操作">三、两个基本操作</h2>
+<p>要实现的五个操作都可以通过下面的两种基本操作实现，即<code>down(x)</code>操作和<code>up(x)</code>操作。这两种操作都与树的高度有关，因此时间复杂度为 <span class="math inline">\(O(log_{2}n)\)</span>。</p>
+<p><img src="https://s1.ax1x.com/2023/08/05/pPAewbn.png" srcset="/img/loading.gif" lazyload style="zoom:80%;"></p>
+<h3 id="downx操作">3.1 <code>down(x)</code>操作</h3>
+<p><code>down(x)</code>是把一个结点往下移。对于更新后的堆，可能存在不满足父节点的值小于等于子节点的情况。因此，需要使用<code>down(x)</code>操作将父节点与子节点交换（每次选取更新后的节点及其左右子节点，比较其大小，选择子节点中最小的数与当前更新的节点交换），从而实现新的小根堆。</p>
+<p><img src="https://s1.ax1x.com/2023/08/05/pPAeBEq.png" srcset="/img/loading.gif" lazyload style="zoom:80%;"></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">down</span><span class="hljs-params">(<span class="hljs-type">int</span> u)</span>	<span class="hljs-comment">// x为下标</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-type">int</span> t = u;<br>    <span class="hljs-keyword">if</span>(u * <span class="hljs-number">2</span> &lt;= size &amp;&amp; h[u * <span class="hljs-number">2</span>] &lt; h[t]) t = u * <span class="hljs-number">2</span>;<br>    <span class="hljs-keyword">if</span>(u * <span class="hljs-number">2</span> + <span class="hljs-number">1</span> &lt;= size &amp;&amp; h[u * <span class="hljs-number">2</span> + <span class="hljs-number">1</span>] &lt; h[t]) t = u * <span class="hljs-number">2</span> + <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">if</span>(u != t)<br>    &#123;<br>        <span class="hljs-built_in">swap</span>(h[u], h[t]);<br>        <span class="hljs-built_in">down</span>(t);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="upx操作">3.2 <code>up(x)</code>操作</h3>
+<p><code>up(x)</code>是把一个结点往上移。对于更新后的堆，可能存在不满足子节点的值大于等于父节点的情况。因此，需要使用<code>up(x)</code>操作将子节点与父节点交换（每次选取更新后的节点及其父节点和兄弟节点，比较其大小，选择最小的数作为当前子树的根），从而实现新的小根堆。</p>
+<p><img src="https://s1.ax1x.com/2023/08/05/pPAeyCT.png" srcset="/img/loading.gif" lazyload style="zoom:80%;"></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">up</span><span class="hljs-params">(<span class="hljs-type">int</span> u)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">while</span>(u / <span class="hljs-number">2</span> &amp;&amp; h[u / <span class="hljs-number">2</span>] &gt; h[u])<br>    &#123;<br>        <span class="hljs-built_in">swap</span>(u, u / <span class="hljs-number">2</span>);<br>        u /= <span class="hljs-number">2</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="使用两个基本操作表示5种操作">3.3 使用两个基本操作表示5种操作</h3>
+<ol type="1">
+<li><p>向集合中插入一个数</p>
+<p>堆的插入操作，是在存储堆的一维数组的最后一个位置插入这个数，即<code>heap[++size] = x</code>。此时，当前堆中已经插入了数<code>x</code>，但有可能不满足小顶堆的特点。因此，还需要通过两种基本操作对堆进行维护操作。由于是在堆的最后一个位置插入的，因此只需要通过<code>up(size)</code>就可以维护小顶堆。</p>
+<p><img src="https://s1.ax1x.com/2023/08/05/pPAec2F.png" srcset="/img/loading.gif" lazyload style="zoom:80%;"></p></li>
+<li><p>求集合当中的最小值</p>
+<p>由于堆是小顶堆，因此集合中的最小的元素即为当前堆的根节点，即<code>heap[1]</code>。</p></li>
+<li><p>删除最小值</p>
+<p>堆的删除操作，是将存储堆的一维数组的最后一个位置的数覆盖到堆的根节点，然后将该一维数组的最后一个结点删除，即<code>heap[1] = heap[size--];</code>。此时，当前堆中已经插入了数<code>x</code>，但有可能不满足小顶堆的特点。因此，还需要通过两种基本操作对堆进行维护操作。由于堆的根节点发生了变化，因此只需要通过<code>down(1)</code>就可以维护小顶堆。</p>
+<p><img src="https://s1.ax1x.com/2023/08/05/pPAe4V1.png" srcset="/img/loading.gif" lazyload style="zoom:80%;"></p></li>
+<li><p>删除任意一个元素</p>
+<p>在小顶堆中删除任意一个元素和删除最小值的实现方式类似。将存储堆的一维数组的最后一个位置的数覆盖到要删除的位置，同时让一维数组的大小减一，即<code>heap[k] = heap[size--]</code>。此时，已经实现了删除操作，但需要使用两种基本操作对堆进行维护。由于删除的位置任意，删除位置的当前值与原来值相比可能有三种情况，即变大、变小和相等。其中，对于相等的情况，不需要对堆进行维护；对于变大的情况，则需要通过<code>down(k)</code>操作对堆进行维护；对于变小的情况，则需要通过<code>up(k)</code>操作对堆进行维护。由于他们之间是互斥的关系，因此可以在删除操作完成后对堆进行维护时，通过<code>down(k);up(k);</code>操作对堆进行维护。此时，除了相等的情况外，<code>down(k)</code>操作和<code>up(k)</code>操作仅执行一个。</p>
+<p><img src="https://s1.ax1x.com/2023/08/05/pPAeI56.png" srcset="/img/loading.gif" lazyload style="zoom:80%;"></p></li>
+<li><p>修改任意一个元素</p>
+<p>在小顶堆中修改任意一个元素和删除任意一个元素类似。假设要修改第<code>k</code>个位置的数为<code>x</code>，则只需要执行<code>heap[k] = x</code>，然后通过两种基本操作维护小顶堆即可。同样也是三种情况，同样也可以简化为<code>down(k);up(k);</code>操作。</p>
+<p><img src="https://s1.ax1x.com/2023/08/05/pPAe78O.png" srcset="/img/loading.gif" lazyload style="zoom:80%;"></p></li>
+</ol>
+<h2 id="四模板">四、模板</h2>
+<p>一般的堆用到的只是简单的<code>down()</code>和<code>up()</code>操作，下面是较为复杂的堆的实现，其中添加了复杂的交换操作。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">// h[N]存储堆中的值, h[1]是堆顶，x的左儿子是2x, 右儿子是2x + 1</span><br><span class="hljs-comment">// ph[k]存储第k个插入的点在堆中的位置</span><br><span class="hljs-comment">// hp[k]存储堆中下标是k的点是第几个插入的</span><br><span class="hljs-type">int</span> h[N], ph[N], hp[N], size;<br><br><span class="hljs-comment">// 交换两个点，及其映射关系</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">heap_swap</span><span class="hljs-params">(<span class="hljs-type">int</span> a, <span class="hljs-type">int</span> b)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-built_in">swap</span>(ph[hp[a]],ph[hp[b]]);<br>    <span class="hljs-built_in">swap</span>(hp[a], hp[b]);<br>    <span class="hljs-built_in">swap</span>(h[a], h[b]);<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">down</span><span class="hljs-params">(<span class="hljs-type">int</span> u)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-type">int</span> t = u;<br>    <span class="hljs-keyword">if</span> (u * <span class="hljs-number">2</span> &lt;= size &amp;&amp; h[u * <span class="hljs-number">2</span>] &lt; h[t]) t = u * <span class="hljs-number">2</span>;<br>    <span class="hljs-keyword">if</span> (u * <span class="hljs-number">2</span> + <span class="hljs-number">1</span> &lt;= size &amp;&amp; h[u * <span class="hljs-number">2</span> + <span class="hljs-number">1</span>] &lt; h[t]) t = u * <span class="hljs-number">2</span> + <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">if</span> (u != t)<br>    &#123;<br>        <span class="hljs-built_in">heap_swap</span>(u, t);<br>        <span class="hljs-built_in">down</span>(t);<br>    &#125;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">up</span><span class="hljs-params">(<span class="hljs-type">int</span> u)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">while</span> (u / <span class="hljs-number">2</span> &amp;&amp; h[u] &lt; h[u / <span class="hljs-number">2</span>])<br>    &#123;<br>        <span class="hljs-built_in">heap_swap</span>(u, u / <span class="hljs-number">2</span>);<br>        u &gt;&gt;= <span class="hljs-number">1</span>;<br>    &#125;<br>&#125;<br><br><span class="hljs-comment">// O(n)建堆</span><br><span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = n / <span class="hljs-number">2</span>; i; i -- ) <span class="hljs-built_in">down</span>(i);<br></code></pre></td></tr></table></figure>
 
                 
               </div>
@@ -375,7 +406,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E9%A2%98%E8%A7%A3/" class="category-chain-item">题解</a>
+  <a href="/categories/Algorithm/" class="category-chain-item">Algorithm</a>
   
   
 
@@ -390,7 +421,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E5%B9%B6%E6%9F%A5%E9%9B%86/" class="print-no-link">#并查集</a>
+        <a href="/tags/%E5%A0%86/" class="print-no-link">#堆</a>
       
     </div>
   
@@ -402,8 +433,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>AcWing240. 食物链</div>
-      <div>http://ihrd.github.io/2023/07/25/食物链/</div>
+      <div>堆</div>
+      <div>http://ihrd.github.io/2023/08/04/堆/</div>
     </div>
     <div class="license-meta">
       
@@ -415,7 +446,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年7月25日</div>
+          <div>2023年8月4日</div>
         </div>
       
       
@@ -447,18 +478,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/08/04/%E5%A0%86/" title="堆">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">堆</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/07/24/%E5%B9%B6%E6%9F%A5%E9%9B%86/" title="并查集">
-                        <span class="hidden-mobile">并查集</span>
+                      <a href="/2023/07/25/%E9%A3%9F%E7%89%A9%E9%93%BE/" title="AcWing240. 食物链">
+                        <span class="hidden-mobile">AcWing240. 食物链</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
