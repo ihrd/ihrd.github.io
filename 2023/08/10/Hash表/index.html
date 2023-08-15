@@ -1,0 +1,843 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Zehao Zhang">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Hash表 一、Hash表的存储结构 一般来说，Hash表的存储结构可以分为两大类，分别为 开放寻址法 和 拉链法 。 Hash表的作用：通过哈希函数将键映射到唯一的索引位置，实现高效的数据查找和插入。 哈希冲突指不同的键经过哈希函数后映射到了相同的索引位置，这种情况下需要通过冲突解决方法来处理，常见的解决冲突的方法包括拉链法（Chaining）和开放地址法（Open Addressing">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hash表">
+<meta property="og:url" content="http://ihrd.github.io/2023/08/10/Hash%E8%A1%A8/index.html">
+<meta property="og:site_name" content="IHRD">
+<meta property="og:description" content="Hash表 一、Hash表的存储结构 一般来说，Hash表的存储结构可以分为两大类，分别为 开放寻址法 和 拉链法 。 Hash表的作用：通过哈希函数将键映射到唯一的索引位置，实现高效的数据查找和插入。 哈希冲突指不同的键经过哈希函数后映射到了相同的索引位置，这种情况下需要通过冲突解决方法来处理，常见的解决冲突的方法包括拉链法（Chaining）和开放地址法（Open Addressing">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s1.ax1x.com/2023/08/15/pPQNqYj.png">
+<meta property="article:published_time" content="2023-08-10T12:55:53.000Z">
+<meta property="article:modified_time" content="2023-08-15T13:21:25.788Z">
+<meta property="article:author" content="Zehao Zhang">
+<meta property="article:tag" content="Hash表">
+<meta property="article:tag" content="字符串哈希">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://s1.ax1x.com/2023/08/15/pPQNqYj.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>Hash表 - IHRD</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"ihrd.github.io","root":"/","version":"1.9.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+    <!-- Google tag (gtag.js) -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript("https://www.googletagmanager.com/gtag/js?id=", function() {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag('js', new Date());
+          gtag('config', '');
+        });
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>IHRD</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/post.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Hash表"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-08-10 20:55" pubdate>
+          2023年8月10日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.2k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          27 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Hash表</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="hash表">Hash表</h1>
+<h2 id="一hash表的存储结构">一、Hash表的存储结构</h2>
+<p>一般来说，Hash表的存储结构可以分为两大类，分别为 <strong>开放寻址法</strong> 和 <strong>拉链法</strong> 。</p>
+<p><strong>Hash表的作用：</strong>通过哈希函数将键映射到唯一的索引位置，实现高效的数据查找和插入。</p>
+<p><strong>哈希冲突</strong>指不同的键经过哈希函数后映射到了相同的索引位置，这种情况下需要通过冲突解决方法来处理，常见的解决冲突的方法包括拉链法（Chaining）和开放地址法（Open Addressing）等。</p>
+<p>在算法题中，对于哈希表的操作一般只有 <strong>添加</strong> 和 <strong>删除</strong> 两个操作，不会出现删除操作。</p>
+<blockquote>
+<p><strong>与离散化的区别：</strong>离散化可以看作Hash表的一个特殊情况，因为离散化通常是保序的。</p>
+</blockquote>
+<h3 id="拉链法简单">1.1 拉链法（简单）</h3>
+<p>在拉链法中，通过一个一维数组存储所有的哈希值。通过拉链法实现的哈希表是一种期望算法，虽然在每个槽上都会拉一个链，但是在平均情况下，每一条链的长度可以看成比较短常数。因此，在一般情况下，哈希表的时间复杂度可以看做 <span class="math inline">\(O(1)\)</span> 。</p>
+<p>在执行 <strong>添加</strong> 操作时，先通过哈希函数<code>h(x)</code>求出<code>x</code>对应的哈希值，找到该哈希值对应的槽，将<code>x</code>添加到对应的链上（其中，链是单链表）。</p>
+<p>在执行 <strong>查找</strong> 操作时，先通过哈希函数<code>h(x)</code>求出<code>x</code>对应的哈希值，找到该哈希值对应的槽，遍历一下该槽对应的单链表中是否存在<code>x</code>即可。</p>
+<p>在执行 <strong>删除</strong> 操作时，同样通过哈希函数<code>h(x)</code>找到对应的槽，查找对应的值删除。但此处的删除并不是真正意义上的删除，而是对相应的节点打上一个标记，表示该结点已删除（例如，开一个<code>bool</code>变量，标记其是否删除）。</p>
+<p><img src="https://s1.ax1x.com/2023/08/15/pPQNXpn.png" srcset="/img/loading.gif" lazyload style="zoom:40%;"></p>
+<blockquote>
+<p>感觉其命名为 <strong>挂灯笼法</strong> 更形象。</p>
+</blockquote>
+<p><strong>注意：</strong>一般来说，在哈希表中，数组长度（取模的数）要求为质数，且该数要离 <span class="math inline">\(2\)</span> 的整数次幂尽可能的远。因为通过这种方法取的数组长度冲突的概率是最小的（通过数学的方法可以证明）。例如，想要取数组的长度为 <span class="math inline">\(10^5\)</span> ，那么可以找一个比数组稍大的且满足上述条件的数，在程序中可以使用这段代码检索这个数：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">100000</span>; ; i++)<br>&#123;<br>    <span class="hljs-type">bool</span> flag = <span class="hljs-literal">true</span>;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j = <span class="hljs-number">2</span>; j * j &lt;= i; j++)<br>        <span class="hljs-keyword">if</span> (i % j == <span class="hljs-number">0</span>)<br>        &#123;<br>            flag = <span class="hljs-literal">false</span>;<br>            <span class="hljs-keyword">break</span>;<br>        &#125;<br>    <span class="hljs-keyword">if</span> (flag)<br>    &#123;<br>        cout &lt;&lt; i &lt;&lt; endl;<br>        <span class="hljs-keyword">break</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p><strong>模板如下：</strong></p>
+<p><img src="https://s1.ax1x.com/2023/08/15/pPQNLfs.png" srcset="/img/loading.gif" lazyload alt="image-20230811163108664" style="zoom: 50%;"></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-type">int</span> h[N], e[N], ne[N], idx;<br><br><span class="hljs-comment">// 向哈希表中插入一个数</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">insert</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-type">int</span> k = (x % N + N) % N;	<span class="hljs-comment">// x % n 的值可能为负数, 因此通过 +n 再取模的方式避免为负数</span><br>    e[idx] = x;<br>    ne[idx] = h[k];<br>    h[k] = idx ++ ;<br>&#125;<br><br><span class="hljs-comment">// 在哈希表中查询某个数是否存在</span><br><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">find</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-type">int</span> k = (x % N + N) % N;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = h[k]; i != <span class="hljs-number">-1</span>; i = ne[i])  <span class="hljs-comment">// h[]使用memset()初始化为 -1</span><br>        <span class="hljs-keyword">if</span> (e[i] == x)<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="开放寻址法">1.2 开放寻址法</h3>
+<p>与拉链法不同，开放寻址法所使用的数据结构只有一个一维数组，但是一维数组的长度要为题目中数据长度的 <span class="math inline">\(2\)</span> ~ <span class="math inline">\(3\)</span> 倍。假设题目中输入了 <span class="math inline">\(10^5\)</span> 个数，那么数组的长度应该为 <span class="math inline">\(2×10^5\)</span> ~ <span class="math inline">\(3×10^5\)</span> 。</p>
+<p>在执行 <strong>添加</strong> 操作时，先通过哈希函数<code>h(x)</code>求出<code>x</code>的哈希值<code>k</code>，根据哈希值<code>k</code>在一维数组中找到相应的位置。如果当前位置有值，则让哈希值<code>k</code>自增，查找下一个位置，直到查找到空位置将<code>x</code>存入为止。</p>
+<p>在执行 <strong>查找</strong> 操作时，先通过哈希函数<code>h(x)</code>求出<code>x</code>的哈希值<code>k</code>，根据哈希值<code>k</code>在一维数组中找到相应的位置。如果当前位置有值，且当前位置的值不等于<code>x</code>，则让哈希值<code>k</code>自增，查找下一个位置，直到查找到<code>x</code>或者遇到空位置为止。</p>
+<p>在执行 <strong>删除</strong> 操作时，先通过哈希函数<code>h(x)</code>求出<code>x</code>的哈希值<code>k</code>，根据哈希值<code>k</code>在一维数组中找到相应的位置。通过查找的方式找到要删除的值，然后将其赋值为无值的状态。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-type">const</span> <span class="hljs-type">int</span> null = <span class="hljs-number">0x3f3f3f3f</span>;<br><span class="hljs-built_in">memset</span>(h, <span class="hljs-number">0x3f</span>, <span class="hljs-keyword">sizeof</span> h);		<span class="hljs-comment">// 需要添加头文件 cstring</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p><strong><code>memset()</code>函数：</strong></p>
+<p><code>memset()</code>函数是按照字节进行赋值的。由于上面提到的<code>h</code>数组是<code>int</code>类型的，因此<code>int</code>类型的 <span class="math inline">\(4\)</span> 个字节都被赋值为<code>0x3f</code>即<code>0x3f3f3f3f</code>。</p>
+<p><strong>常用的几个赋值：</strong></p>
+<p><code>memset()</code>赋值为 <span class="math inline">\(0\)</span>，<span class="math inline">\(0\)</span> 的二进制表示为 <span class="math inline">\(00000000\)</span>，在赋值的时候，<span class="math inline">\(4\)</span>个字节全为 <span class="math inline">\(0\)</span>，因此最终赋值为 <span class="math inline">\(0\)</span>。</p>
+<p><code>memset()</code>赋值为 <span class="math inline">\(-1\)</span>，<span class="math inline">\(-1\)</span> 的二进制表示为 <span class="math inline">\(11111111\)</span>，在赋值的时候， <span class="math inline">\(4\)</span> 个字节全为 <span class="math inline">\(-1\)</span>，因此最终赋值为 <span class="math inline">\(-1\)</span>。</p>
+</blockquote>
+<p><strong>模板如下：</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-type">int</span> h[N];<br><br><span class="hljs-comment">// 如果x在哈希表中，返回x的下标；如果x不在哈希表中，返回x应该插入的位置</span><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">find</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-type">int</span> t = (x % N + N) % N;<br>    <span class="hljs-keyword">while</span> (h[t] != null &amp;&amp; h[t] != x)<br>    &#123;<br>        t ++ ;<br>        <span class="hljs-keyword">if</span> (t == N) t = <span class="hljs-number">0</span>;<br>    &#125;<br>    <span class="hljs-keyword">return</span> t;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="二字符串哈希方式">二、字符串哈希方式</h2>
+<p>对于一些字符串相关的问题，不一定要用<code>KMP</code>来做，也可以用字符串哈希来做。</p>
+<p><strong>作用：</strong>判断字符串中的两个字串是否相同，即判断两个字符串的哈希值是否相同。</p>
+<p><strong>字符串哈希的求法：</strong>将字符串看成<code>P</code>进制数（根据经验，<code>P</code>取 <span class="math inline">\(131\)</span> 或 <span class="math inline">\(13331\)</span> 时，出现冲突的概率非常低），按照进制转换的方法，将该<code>P</code>进制数转化为 <span class="math inline">\(10\)</span> 进制数。由于转化后的数比较大，因此可以通过取模运算，对计算结果做取模处理（<code>mod Q</code>），这样就可以把任何一个字符串映射为 <span class="math inline">\(0\)</span> ~ <span class="math inline">\(Q\)</span> 之间的数（根据经验，<code>Q</code>取 <span class="math inline">\(2^{64}\)</span> 时出现冲突的概率比较低）。</p>
+<p><strong>计算简化：</strong>因为<code>Q</code>取的为 <span class="math inline">\(2^{64}\)</span>，即对 <span class="math inline">\(2^{64}\)</span> 取模。在这里，可以直接使用<code>unsigned long long</code>存储所有的哈希值，此时不需要取模了，因为可以使用溢出来代替取模。</p>
+<p><strong>两个假设：</strong></p>
+<p>假设字符串的哈希值不为 <span class="math inline">\(0\)</span>。因为当字符串的哈希值为 <span class="math inline">\(0\)</span> 的时候，出现冲突的概率较高。例如，假设<code>A</code>的哈希值为 <span class="math inline">\(0\)</span>，那么<code>AA</code>的哈希值也为 <span class="math inline">\(0\)</span>，<code>AAA</code>的哈希值也为 <span class="math inline">\(0\)</span>，很大概率出现冲突。</p>
+<p>假设字符串哈希中不存在冲突。根据经验，<code>P</code>取 <span class="math inline">\(131\)</span> 或 <span class="math inline">\(13331\)</span> 且<code>Q</code>取 <span class="math inline">\(2^{64}\)</span> 时，出现冲突的概率非常低。</p>
+<hr>
+<p>在使用字符串哈希处理字符串问题时，通常先计算出字符串的前缀哈希，即求出每一个前缀字串的哈希值，存储在<code>h</code>数组中。在解决实际问题时，通过字符串的前缀哈希求出字符串的哈希，进而进行字符串的相关操作。字符串的前缀哈希求法如下： <span class="math display">\[
+从\ l\ 到\ R\ 的哈希值:
+\\
+h[R] - h[L-1]×p^{R-L+1}
+\]</span> <img src="https://s1.ax1x.com/2023/08/15/pPQNqYj.png" srcset="/img/loading.gif" lazyload style="zoom:70%;"></p>
+<p><strong>模板如下：</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">// 核心思想：将字符串看成P进制数，P的经验值是131或13331，取这两个值的冲突概率低</span><br><span class="hljs-comment">// 小技巧：取模的数用2^64，这样直接用unsigned long long存储，溢出的结果就是取模的结果</span><br><br><span class="hljs-keyword">typedef</span> <span class="hljs-type">unsigned</span> <span class="hljs-type">long</span> <span class="hljs-type">long</span> ULL;<br>ULL h[N], p[N]; <span class="hljs-comment">// h[k]存储字符串前k个字母的哈希值, p[k]存储 P^k mod 2^64</span><br><br><span class="hljs-comment">// 初始化</span><br>p[<span class="hljs-number">0</span>] = <span class="hljs-number">1</span>;<br><span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i ++ )<br>&#123;<br>    h[i] = h[i - <span class="hljs-number">1</span>] * P + str[i];<br>    p[i] = p[i - <span class="hljs-number">1</span>] * P;	<span class="hljs-comment">// 供②处使用</span><br>&#125;<br><br><span class="hljs-comment">// 计算子串 str[l ~ r] 的哈希值</span><br><span class="hljs-function">ULL <span class="hljs-title">get</span><span class="hljs-params">(<span class="hljs-type">int</span> l, <span class="hljs-type">int</span> r)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">return</span> h[r] - h[l - <span class="hljs-number">1</span>] * p[r - l + <span class="hljs-number">1</span>];	<span class="hljs-comment">// ②</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Algorithm/" class="category-chain-item">Algorithm</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Hash%E8%A1%A8/" class="print-no-link">#Hash表</a>
+      
+        <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%93%88%E5%B8%8C/" class="print-no-link">#字符串哈希</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Hash表</div>
+      <div>http://ihrd.github.io/2023/08/10/Hash表/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Zehao Zhang</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年8月10日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/08/13/C-STL%E7%9A%84%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/" title="C++ STL的使用技巧">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">C++ STL的使用技巧</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/08/04/%E5%A0%86/" title="堆">
+                        <span class="hidden-mobile">堆</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"HuETTBGkMa6MIN1F2Pg1ifuH-gzGzoHsz","appKey":"8n4PN3ybypCCxaB6RmZIFb19","path":"window.location.pathname","placeholder":"请在这里输入您的评论！","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
