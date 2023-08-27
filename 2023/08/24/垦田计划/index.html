@@ -1,0 +1,838 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Zehao Zhang">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="AcWing 5017. 垦田计划  题目来源： 第29次CCF计算机软件能力认证 题目链接： AcWing 5017. 垦田计划  一、题目 顿顿总共选中了 \(n\) 块区域准备开垦田地，由于各块区域大小不一，开垦所需时间也不尽相同。 据估算，其中第 \(i\) 块（\(1≤i≤n\)）区域的开垦耗时为 \(t_i\) 天。 这 \(n\) 块区域可以同时开垦，所以总耗时 \(tTo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AcWing 5017. 垦田计划">
+<meta property="og:url" content="http://ihrd.github.io/2023/08/24/%E5%9E%A6%E7%94%B0%E8%AE%A1%E5%88%92/index.html">
+<meta property="og:site_name" content="IHRD">
+<meta property="og:description" content="AcWing 5017. 垦田计划  题目来源： 第29次CCF计算机软件能力认证 题目链接： AcWing 5017. 垦田计划  一、题目 顿顿总共选中了 \(n\) 块区域准备开垦田地，由于各块区域大小不一，开垦所需时间也不尽相同。 据估算，其中第 \(i\) 块（\(1≤i≤n\)）区域的开垦耗时为 \(t_i\) 天。 这 \(n\) 块区域可以同时开垦，所以总耗时 \(tTo">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s1.ax1x.com/2023/08/27/pPU0By6.png">
+<meta property="article:published_time" content="2023-08-24T14:07:08.000Z">
+<meta property="article:modified_time" content="2023-08-27T12:09:20.211Z">
+<meta property="article:author" content="Zehao Zhang">
+<meta property="article:tag" content="二分">
+<meta property="article:tag" content="贪心">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://s1.ax1x.com/2023/08/27/pPU0By6.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>AcWing 5017. 垦田计划 - IHRD</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"ihrd.github.io","root":"/","version":"1.9.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+    <!-- Google tag (gtag.js) -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript("https://www.googletagmanager.com/gtag/js?id=", function() {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag('js', new Date());
+          gtag('config', '');
+        });
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>IHRD</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/post.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="AcWing 5017. 垦田计划"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-08-24 22:07" pubdate>
+          2023年8月24日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.3k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          28 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">AcWing 5017. 垦田计划</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="acwing-5017.-垦田计划">AcWing 5017. 垦田计划</h1>
+<blockquote>
+<p><strong>题目来源：</strong> 第29次CCF计算机软件能力认证 <strong>题目链接：</strong> <a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/5020/">AcWing 5017. 垦田计划</a></p>
+</blockquote>
+<h2 id="一题目">一、题目</h2>
+<p>顿顿总共选中了 <span class="math inline">\(n\)</span> 块区域准备开垦田地，由于各块区域大小不一，开垦所需时间也不尽相同。 据估算，其中第 <span class="math inline">\(i\)</span> 块（<span class="math inline">\(1≤i≤n\)</span>）区域的开垦耗时为 <span class="math inline">\(t_i\)</span> 天。 这 <span class="math inline">\(n\)</span> 块区域可以同时开垦，所以总耗时 <span class="math inline">\(tTotal\)</span> 取决于耗时最长的区域，即：<span class="math display">\[tTotal=max\{t1,t2,…,tn\}\]</span>为了加快开垦进度，顿顿准备在部分区域投入额外资源来缩短开垦时间。 具体来说： - 在第 <span class="math inline">\(i\)</span> 块区域每投入 <span class="math inline">\(c_i\)</span> 单位资源，便可将其开垦耗时缩短 1 天； - 耗时缩短天数以整数记，即第 <span class="math inline">\(i\)</span> 块区域投入资源数量必须是 <span class="math inline">\(c_i\)</span> 的整数倍； - 在第 <span class="math inline">\(i\)</span> 块区域最多可投入 <span class="math inline">\(c_i×(t_i−k)\)</span> 单位资源，将其开垦耗时缩短为 <span class="math inline">\(k\)</span> 天； - 这里的 <span class="math inline">\(k\)</span> 表示开垦一块区域的最少天数，满足 <span class="math inline">\(0&lt;k≤min\{t_1,t_2,…,t_n\}\)</span>； - 换言之，如果无限制地投入资源，所有区域都可以用 <span class="math inline">\(k\)</span> 天完成开垦。</p>
+<p>现在顿顿手中共有 <span class="math inline">\(m\)</span> 单位资源可供使用，试计算开垦 <span class="math inline">\(n\)</span> 块区域最少需要多少天？</p>
+<table style="width:6%;">
+
+<tbody>
+<tr class="odd">
+<td>### 输入格式 输入共 <span class="math inline">\(n+1\)</span> 行。 输入的第一行包含空格分隔的三个正整数 <span class="math inline">\(n\)</span>, <span class="math inline">\(m\)</span>, <span class="math inline">\(k\)</span>，分别表示待开垦的区域总数、顿顿手上的资源数量和每块区域的最少开垦天数。 接下来 <span class="math inline">\(n\)</span> 行，每行包含空格分隔的两个正整数 <span class="math inline">\(t_i\)</span> 和 <span class="math inline">\(c_i\)</span>，分别表示第 <span class="math inline">\(i\)</span> 块区域开垦耗时和将耗时缩短 <span class="math inline">\(1\)</span> 天所需资源数量。</td>
+</tr>
+<tr class="even">
+<td>### 输出格式 输出一个整数，表示开垦 <span class="math inline">\(n\)</span> 块区域的最少耗时。 ### 数据范围 <span class="math inline">\(70\%\)</span> 的测试数据满足：<span class="math inline">\(0&lt;n\)</span>, <span class="math inline">\(t_i\)</span>, <span class="math inline">\(c_i≤100\)</span> 且 <span class="math inline">\(0&lt;m≤10^6\)</span>； 全部的测试数据满足：<span class="math inline">\(0&lt;n\)</span>, <span class="math inline">\(t_i\)</span>, <span class="math inline">\(c_i≤10^5\)</span> 且 <span class="math inline">\(0&lt;m≤10^9\)</span>。</td>
+</tr>
+<tr class="odd">
+<td>### 输入样例1： <figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs basic"><span class="hljs-symbol">4 </span><span class="hljs-number">9</span> <span class="hljs-number">2</span><br><span class="hljs-symbol">6 </span><span class="hljs-number">1</span><br><span class="hljs-symbol">5 </span><span class="hljs-number">1</span><br><span class="hljs-symbol">6 </span><span class="hljs-number">2</span><br><span class="hljs-symbol">7 </span><span class="hljs-number">1</span><br></code></pre></td></tr></table></figure> ### 输出样例1： <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs">5<br></code></pre></td></tr></table></figure> <strong>样例1解释</strong> 如下表所示，投入 <span class="math inline">\(5\)</span> 单位资源即可将总耗时缩短至 <span class="math inline">\(5\)</span> 天。此时顿顿手中还剩余 <span class="math inline">\(4\)</span> 单位资源，但无论如何安排，也无法使总耗时进一步缩短。 | <span class="math inline">\(i\)</span> | 基础耗时 | <span class="math inline">\(t_i\)</span> 缩减 <span class="math inline">\(1\)</span> 天所需资源 | <span class="math inline">\(c_i\)</span> 投入资源数量 | 实际耗时 | | ---- | -------- | ------------------------- | ------------------ | -------- | | <span class="math inline">\(1\)</span> | <span class="math inline">\(6\)</span> | <span class="math inline">\(1\)</span> | <span class="math inline">\(1\)</span> | <span class="math inline">\(5\)</span> | | <span class="math inline">\(2\)</span> | <span class="math inline">\(5\)</span> | <span class="math inline">\(1\)</span> | <span class="math inline">\(0\)</span> | <span class="math inline">\(5\)</span> | | <span class="math inline">\(3\)</span> | <span class="math inline">\(6\)</span> | <span class="math inline">\(2\)</span> | <span class="math inline">\(2\)</span> | <span class="math inline">\(5\)</span> | | <span class="math inline">\(4\)</span> | <span class="math inline">\(7\)</span> | <span class="math inline">\(1\)</span> | <span class="math inline">\(2\)</span> | <span class="math inline">\(5\)</span> | ### 输入样例2： <figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs basic"><span class="hljs-symbol">4 </span><span class="hljs-number">30</span> <span class="hljs-number">2</span><br><span class="hljs-symbol">6 </span><span class="hljs-number">1</span><br><span class="hljs-symbol">5 </span><span class="hljs-number">1</span><br><span class="hljs-symbol">6 </span><span class="hljs-number">2</span><br><span class="hljs-symbol">7 </span><span class="hljs-number">1</span><br></code></pre></td></tr></table></figure> ### 输出样例2： <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs">2<br></code></pre></td></tr></table></figure> <strong>样例2解释</strong> 投入 <span class="math inline">\(20\)</span> 单位资源，恰好可将所有区域开垦耗时均缩短为 <span class="math inline">\(k=2\)</span> 天；受限于 <span class="math inline">\(k\)</span>，剩余的 <span class="math inline">\(10\)</span> 单位资源无法使耗时进一步缩短。</td>
+</tr>
+<tr class="even">
+<td>## 二、思路和算法</td>
+</tr>
+<tr class="odd">
+<td><img src="https://s1.ax1x.com/2023/08/27/pPU0By6.png" srcset="/img/loading.gif" lazyload style="zoom:80%;"></td>
+</tr>
+<tr class="even">
+<td>由题意可知，开垦 <span class="math inline">\(n\)</span> 块地所需的最少天数 <code>days</code>为所有地耗时缩短后的最长时间，且满足 <span class="math inline">\(k≤days≤10^5\)</span>。</td>
+</tr>
+<tr class="odd">
+<td>以所需的最少天数为分界，可以划分出两个不同的类别。当<code>days</code>小于最少天数时，其所需资源大于<code>m</code>；当<code>days</code>大于等于最少天数时，其所需资源小于等于<code>m</code>。所以，这个题中的数据具有二段性，可以通过二分的方法解决。</td>
+</tr>
+<tr class="even">
+<td><img src="https://s1.ax1x.com/2023/08/27/pPU00Qx.png" srcset="/img/loading.gif" lazyload style="zoom:80%;"></td>
+</tr>
+<tr class="odd">
+<td>其中，每段缩短至<code>x</code>天所需的资源可以通过如下公式求得： <span class="math display">\[
+used = (t[i]-x)×c[i]
+\]</span> 由于题目中所给的参数 <span class="math inline">\(n,t_i,c_i\)</span> 的最大值都是 <span class="math inline">\(10^5\)</span>，因此可能使用的最大资源是 <span class="math inline">\(10^{15}\)</span>，超过了<code>int</code>的范围，需要使用<code>long long</code>存储所需的资源数量。</td>
+</tr>
+</tbody>
+</table>
+<p>另一种解决方案是，遍历所有地的天数，找到最长的天数，使用已有的资源对其进行”裁剪“，类似于贪心的思想。</p>
+<p>总体来看，可以计算出每天所需的资源数目，在缩短天数时，只需将减去要缩短的那天所需的资源即可。对于每天所需资源的计算，可以通过一个差分数组代表其每天所需的资源。对于差分数组<code>s[i]</code>，表示如果当前最少天数为<code>i</code>天，将其缩短为<code>i-1</code>天所需的资源数量。</p>
+<p>题目要求输入两个正整数，分别代表开垦一块地的时间（设为 <span class="math inline">\(t\)</span>）和缩短一天所需要的资源数目（设为 <span class="math inline">\(c\)</span>）。那么，对于每次的输入，可以通过公式<code>s[1]+c, s[t+1]-c</code>初始化差分数组，然后求其前缀和（<code>for</code>循环中使用<code>s[i] += s[i-1]</code>）即可得到所需的差分数组。</p>
+<p>最后，从可能的最大天数开始遍历差分数组，缩短逐个缩短天数即可。</p>
+<h2 id="三代码及复杂度">三、代码及复杂度</h2>
+<h3 id="方法一二分-onlog_2n">方法一：二分 <span class="math inline">\(O(nlog_2n)\)</span></h3>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-keyword">typedef</span> <span class="hljs-type">long</span> <span class="hljs-type">long</span> LL;<br><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> N = <span class="hljs-number">100010</span>;<br><span class="hljs-type">int</span> n, m, k;<br><span class="hljs-type">int</span> t[N], c[N];<br><br><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">check</span><span class="hljs-params">(<span class="hljs-type">int</span> mid)</span></span><br><span class="hljs-function"></span>&#123;<br>    LL sum = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++)<br>    	<span class="hljs-keyword">if</span> (t[i] &gt; mid)<br>            sum += (LL)(t[i] - mid) * c[i];<br>    <span class="hljs-keyword">return</span> sum &lt;= m;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d%d%d&quot;</span>, &amp;n, &amp;m, &amp;k);<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d%d&quot;</span>, &amp;t[i], &amp;c[i]);<br>    <span class="hljs-type">int</span> l = k, r = N;<br>    <span class="hljs-keyword">while</span> (l &lt; r)<br>    &#123;<br>        <span class="hljs-type">int</span> mid = l + r &gt;&gt; <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">if</span> (<span class="hljs-built_in">check</span>(mid)) r = mid;	<span class="hljs-comment">// 如果mid可以满足，那么所有大于等于mid的都可以满足 答案-&gt;[l, mid]</span><br>        <span class="hljs-keyword">else</span> l = mid + <span class="hljs-number">1</span>;	<span class="hljs-comment">// 如果mid不能满足, 那么答案在区间[mid+1, r]中</span><br>    &#125;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>, l);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<hr>
+<h3 id="方法二差分-on">方法二：差分 <span class="math inline">\(O(n)\)</span></h3>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-keyword">typedef</span> <span class="hljs-type">long</span> <span class="hljs-type">long</span> LL;<br><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> N = <span class="hljs-number">100010</span>;<br><br><span class="hljs-type">int</span> n, m, k;<br>LL s[N];<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d%d%d&quot;</span>, &amp;n, &amp;m, &amp;k);<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++)<br>    &#123;<br>        <span class="hljs-type">int</span> t, c;<br>        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d%d&quot;</span>, &amp;t, &amp;c);<br>        s[<span class="hljs-number">1</span>] += c, s[t + <span class="hljs-number">1</span>] -= c;<br>    &#125;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; N; i++) s[i] += s[i - <span class="hljs-number">1</span>];<br>    LL cost = <span class="hljs-number">0</span>;<br>    <span class="hljs-type">int</span> i = N - <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">while</span> (i &gt; k &amp;&amp; cost + s[i] &lt;= m) cost += s[i--];<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>, i);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<hr>
+<h3 id="复杂度分析">复杂度分析</h3>
+<p>对于二分的方法，包括二分和枚举两部分。其中，二分答案部分的时间复杂度为 <span class="math inline">\(O(log_2n)\)</span>。在每次二分结束后，都需要对二分的答案进行枚举计算，判断是否符合题意，该部分时间复杂度为 <span class="math inline">\(O(n)\)</span>。故二分方法的时间复杂度为 <span class="math inline">\(O(nlog_2n)\)</span>。</p>
+<p>对于差分的方法，包括初始化和遍历两部分，且这两部分是并列关系。在初始化时，需要输入数据和计算前缀和，其时间复杂度为 <span class="math inline">\(O(n)\)</span>；在遍历阶段，从大到小一次遍历差分数组，其时间复杂度为 <span class="math inline">\(O(n)\)</span>。综上，差分方法的时间复杂度为 <span class="math inline">\(O(n)\)</span>。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E9%A2%98%E8%A7%A3/" class="category-chain-item">题解</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E4%BA%8C%E5%88%86/" class="print-no-link">#二分</a>
+      
+        <a href="/tags/%E8%B4%AA%E5%BF%83/" class="print-no-link">#贪心</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>AcWing 5017. 垦田计划</div>
+      <div>http://ihrd.github.io/2023/08/24/垦田计划/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Zehao Zhang</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年8月24日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/08/14/%E6%8E%92%E5%88%97%E6%95%B0%E5%AD%97/" title="AcWing842. 排列数字">
+                        <span class="hidden-mobile">AcWing842. 排列数字</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"HuETTBGkMa6MIN1F2Pg1ifuH-gzGzoHsz","appKey":"8n4PN3ybypCCxaB6RmZIFb19","path":"window.location.pathname","placeholder":"请在这里输入您的评论！","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
